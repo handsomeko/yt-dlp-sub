@@ -44,8 +44,8 @@ def is_valid_youtube_id(video_id: Optional[str]) -> bool:
     if len(video_id) != 11:
         return False
     
-    # Cannot start or end with -, _, or .
-    if video_id[0] in ['-', '_', '.'] or video_id[-1] in ['-', '_', '.']:
+    # Cannot end with -, _, or . (YouTube video IDs CAN start with hyphens and underscores)
+    if video_id[-1] in ['-', '_', '.']:
         return False
     
     # Must match YouTube's base64url alphabet
