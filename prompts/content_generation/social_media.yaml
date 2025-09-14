@@ -1,0 +1,57 @@
+# Social Media Content Generation Prompts
+# These templates use Jinja2 syntax for variable substitution
+
+name: social_media_default
+content_type: social_media
+description: Default social media content generation prompt
+version: 1
+variables:
+  - title
+  - transcript
+  - channel_name
+  - key_points
+
+template: |
+  Create engaging social media content from this video transcript.
+  
+  Video Title: {{ title }}
+  Channel: {{ channel_name | default('Content Creator') }}
+  
+  Key Content:
+  {{ transcript | remove_timestamps | truncate_words(500) }}
+  
+  Generate the following social media content:
+  
+  ## 1. Twitter/X Thread (3-5 tweets)
+  - Start with a hook that grabs attention
+  - Each tweet should be under 280 characters
+  - Include one key insight per tweet
+  - End with a call-to-action or question
+  - Suggest 3-5 relevant hashtags
+  
+  ## 2. LinkedIn Post (150-200 words)
+  - Professional tone but conversational
+  - Start with a thought-provoking question or statement
+  - Share 2-3 key insights with context
+  - Include a personal reflection or industry observation
+  - End with an engaging question to encourage comments
+  - Suggest 3-5 professional hashtags
+  
+  ## 3. Instagram Caption (100-150 words)
+  - Casual, engaging tone
+  - Start with an attention-grabbing first line
+  - Use line breaks for readability
+  - Include a clear call-to-action
+  - Suggest 10-15 relevant hashtags
+  
+  ## 4. Facebook Post (75-100 words)
+  - Friendly, accessible tone
+  - Focus on value and benefits
+  - Include a question to drive engagement
+  - Keep it conversational
+  
+  Make all content:
+  - Platform-appropriate in tone and length
+  - Engaging and shareable
+  - True to the original message
+  - Free of video-specific references

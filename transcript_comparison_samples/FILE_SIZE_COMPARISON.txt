@@ -1,0 +1,47 @@
+TRANSCRIPT FILE SIZE COMPARISON
+===============================
+
+📊 MIKEYNOCODE VIDEO (21 minutes - Technical Tutorial)
+------------------------------------------------------
+AUTO-GENERATED:
+  • SRT: 41,312 bytes (40 KB)
+  • TXT: 21,575 bytes (21 KB)
+
+WHISPER:
+  • SRT: 29,066 bytes (28 KB)  [-30% vs auto]
+  • TXT: 21,475 bytes (21 KB)  [-0.5% vs auto]
+
+📊 TEDX VIDEO (14 minutes - Professional Presentation)  
+------------------------------------------------------
+AUTO-GENERATED:
+  • SRT: 122,595 bytes (120 KB)
+  • TXT: 81,001 bytes (79 KB)
+
+WHISPER:
+  • SRT: 15,820 bytes (15 KB)   [-87% vs auto]
+  • TXT: 12,803 bytes (12 KB)   [-84% vs auto]
+
+🔍 KEY INSIGHTS
+---------------
+1. TEDx shows MASSIVE size difference (87% smaller for Whisper)
+2. MikeyNoCode shows smaller difference due to content type
+3. Whisper consistently produces smaller, cleaner files
+4. Auto-generated files inflated by XML timing tags and duplicates
+
+💡 WHY THE DIFFERENCE?
+---------------------
+• Auto files contain XML timing metadata: <00:00:01.600><c> word </c>
+• Auto files repeat text multiple times for timing
+• Whisper produces clean, natural text without artifacts
+• Better compression and readability with Whisper
+
+📈 PROCESSING TIME vs FILE SIZE TRADEOFF
+----------------------------------------
+AUTO:     Fast (10s)     → Large files (120KB)
+WHISPER:  Slow (5min)    → Small files (15KB)
+          12x slower     → 87% smaller
+
+🎯 RECOMMENDATION
+----------------
+For AI processing: Use Whisper (clean, compact)
+For quick preview: Use Auto (fast, needs cleaning)

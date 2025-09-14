@@ -1,0 +1,15 @@
+{
+  "continuous_mode": true,
+  "max_jobs": null,
+  "worker_id": "prod-orchestrator-1",
+  "max_concurrent_jobs": 5,
+  "polling_interval": 3.0,
+  "health_check_interval": 30.0,
+  "max_retries": 3,
+  "retry_delay": 5.0,
+  "log_level": "INFO",
+  "log_file": "logs/orchestrator.log",
+  "job_types": [],
+  "description": "Production configuration for YouTube Content Orchestrator",
+  "environment": "production"
+}

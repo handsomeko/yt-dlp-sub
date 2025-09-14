@@ -1,0 +1,40 @@
+# Blog Post Generation Prompts
+# These templates use Jinja2 syntax for variable substitution
+
+name: blog_post_default
+content_type: blog_post
+description: Default blog post generation prompt
+version: 1
+variables:
+  - title
+  - transcript
+  - channel_name
+  - word_limit
+  - tone
+
+template: |
+  Transform this video transcript into an engaging blog post.
+  
+  Video Title: {{ title }}
+  Channel: {{ channel_name | default('Unknown') }}
+  Target Length: {{ word_limit | default(800) }} words
+  Tone: {{ tone | default('professional') }}
+  
+  Transcript:
+  {{ transcript | truncate_words(1000) }}
+  
+  Create a well-structured blog post that:
+  1. Has an attention-grabbing title (different from the video title)
+  2. Includes an engaging introduction that hooks the reader
+  3. Breaks down the main points with clear headers and subheaders
+  4. Incorporates relevant examples or anecdotes from the video
+  5. Ends with a strong conclusion and call-to-action
+  6. Maintains the original message while improving readability
+  
+  Format the post with:
+  - Short paragraphs (3-4 sentences max)
+  - Bullet points or numbered lists where appropriate
+  - Clear transitions between sections
+  - SEO-friendly structure
+  
+  Do not include timestamps or video-specific references like "as you can see" or "in this video".

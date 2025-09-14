@@ -1,0 +1,168 @@
+# Secure Docker configuration addressing Issue #113
+# Multi-stage build for minimal attack surface
+
+# Stage 1: Builder
+FROM python:3.11-slim AS builder
+
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    python3-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create non-root user for building
+RUN useradd -m -u 1000 -s /bin/bash builduser
+USER builduser
+WORKDIR /home/builduser
+
+# Copy requirements and install Python dependencies
+COPY --chown=builduser:builduser requirements.txt .
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+# Stage 2: Runtime (minimal)
+FROM python:3.11-slim
+
+# Install runtime dependencies and security tools
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ffmpeg \
+    clamav \
+    clamav-daemon \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Update ClamAV database
+RUN freshclam
+
+# Create non-root user with specific UID/GID
+RUN groupadd -g 1000 appuser && \
+    useradd -r -u 1000 -g appuser -d /app -s /sbin/nologin appuser
+
+# Set up application directory
+WORKDIR /app
+
+# Copy Python packages from builder
+COPY --from=builder --chown=appuser:appuser /home/builduser/.local /home/appuser/.local
+
+# Copy application code
+COPY --chown=appuser:appuser . .
+
+# Create necessary directories with proper permissions
+RUN mkdir -p /app/data /app/logs /app/temp && \
+    chown -R appuser:appuser /app && \
+    chmod 700 /app/data /app/logs /app/temp
+
+# Security configurations
+# Drop all capabilities and add only what's needed
+RUN setcap -r /usr/bin/python3.11 || true
+
+# Create security configuration files
+COPY <<EOF /etc/apparmor.d/docker-yt-dl-sub
+#include <tunables/global>
+
+profile docker-yt-dl-sub flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+  
+  # Allow network access (restricted)
+  network inet stream,
+  network inet6 stream,
+  
+  # File access (restricted to /app)
+  /app/** r,
+  /app/data/** rw,
+  /app/logs/** rw,
+  /app/temp/** rw,
+  
+  # Python and libraries
+  /usr/local/lib/python3.11/** r,
+  /home/appuser/.local/** r,
+  
+  # System libraries
+  /lib/** r,
+  /usr/lib/** r,
+  
+  # Deny everything else
+  deny /** w,
+  deny /etc/** w,
+  deny /root/** rwx,
+  deny /home/** w,
+}
+EOF
+
+# Seccomp profile
+COPY <<EOF /etc/docker/seccomp/yt-dl-sub.json
+{
+  "defaultAction": "SCMP_ACT_ERRNO",
+  "architectures": [
+    "SCMP_ARCH_X86_64",
+    "SCMP_ARCH_X86",
+    "SCMP_ARCH_X32"
+  ],
+  "syscalls": [
+    {
+      "names": [
+        "accept", "accept4", "access", "arch_prctl", "bind", "brk",
+        "capget", "capset", "chdir", "chmod", "chown", "clock_getres",
+        "clock_gettime", "clock_nanosleep", "close", "connect", "dup",
+        "dup2", "dup3", "epoll_create", "epoll_create1", "epoll_ctl",
+        "epoll_pwait", "epoll_wait", "exit", "exit_group", "fchdir",
+        "fchmod", "fchown", "fcntl", "fdatasync", "fstat", "fstatfs",
+        "fsync", "ftruncate", "futex", "getcwd", "getdents", "getdents64",
+        "getegid", "geteuid", "getgid", "getgroups", "getpeername",
+        "getpgid", "getpgrp", "getpid", "getppid", "getpriority",
+        "getrandom", "getresgid", "getresuid", "getrlimit", "getrusage",
+        "getsid", "getsockname", "getsockopt", "gettid", "gettimeofday",
+        "getuid", "ioctl", "lseek", "madvise", "memfd_create", "mincore",
+        "mmap", "mprotect", "mremap", "msync", "munmap", "nanosleep",
+        "newfstatat", "open", "openat", "pipe", "pipe2", "poll", "ppoll",
+        "prctl", "pread64", "preadv", "preadv2", "pselect6", "pwrite64",
+        "pwritev", "pwritev2", "read", "readlink", "readlinkat", "readv",
+        "recvfrom", "recvmsg", "rename", "renameat", "renameat2",
+        "rt_sigaction", "rt_sigpending", "rt_sigprocmask", "rt_sigqueueinfo",
+        "rt_sigreturn", "rt_sigsuspend", "rt_sigtimedwait", "rt_tgsigqueueinfo",
+        "sched_getaffinity", "sched_yield", "seccomp", "select", "sendfile",
+        "sendmsg", "sendto", "set_robust_list", "set_tid_address",
+        "setitimer", "setpgid", "setpriority", "setresgid", "setresuid",
+        "setsid", "setsockopt", "shutdown", "sigaltstack", "socket",
+        "socketpair", "stat", "statfs", "statx", "symlink", "symlinkat",
+        "sync", "sysinfo", "tgkill", "time", "timerfd_create",
+        "timerfd_gettime", "timerfd_settime", "tkill", "truncate",
+        "umask", "uname", "unlink", "unlinkat", "utime", "utimensat",
+        "utimes", "wait4", "waitid", "write", "writev"
+      ],
+      "action": "SCMP_ACT_ALLOW"
+    }
+  ]
+}
+EOF
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=5s --retries=3 \
+  CMD curl -f http://localhost:8000/health || exit 1
+
+# Environment variables
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PATH=/home/appuser/.local/bin:$PATH \
+    DEPLOYMENT_MODE=DOCKER \
+    STORAGE_PATH=/app/data \
+    LOG_PATH=/app/logs
+
+# Switch to non-root user
+USER appuser
+
+# Expose port (unprivileged)
+EXPOSE 8000
+
+# Entry point with security flags
+ENTRYPOINT ["python3", "-u"]
+CMD ["api/main.py"]
+
+# Security labels
+LABEL security.capabilities.drop="ALL" \
+      security.capabilities.add="NET_BIND_SERVICE" \
+      security.no-new-privileges="true" \
+      security.seccomp-profile="/etc/docker/seccomp/yt-dl-sub.json" \
+      security.apparmor-profile="docker-yt-dl-sub" \
+      security.read-only-root="true" \
+      maintainer="yt-dl-sub-security@example.com" \
+      version="2.0.0-secure"

@@ -1,0 +1,35 @@
+{
+  "test_timestamp": "2025-09-06T09:43:00.917574",
+  "test_type": "dual_transcript_comparison",
+  "channel_info": {
+    "channel_id": "UCde0vB0fTwC8AT3sJofFV0w",
+    "channel_name": "Mikey No Code",
+    "channel_url": "https://www.youtube.com/@mikeynocode/videos",
+    "channel": "Mikey No Code",
+    "uploader": "Mikey No Code",
+    "description": "Tools I used:\n\n✅ Build your own app with Rocket https://www.rocket.new/?aff=mikey&utm_source=youtube&utm_medium=mikeynocode&utm_campaign=3rdvideo\n\nJoin my exclusive newsletter: https://mikeyno-co...",
+    "subscriber_count": null,
+    "video_count": null,
+    "retrieved_at": "2025-09-06T09:42:33.800572",
+    "content_tab_used": "https://www.youtube.com/@mikeynocode"
+  },
+  "videos_processed": 1,
+  "report": {
+    "summary": "No successful comparisons",
+    "total_videos": 1,
+    "failed_videos": 1
+  },
+  "detailed_results": [
+    {
+      "video_id": "0S6IHp83zws",
+      "video_title": "How to Build a Simple App for the App Store Using AI (For Beginners)",
+      "video_url": "https://www.youtube.com/watch?v=0S6IHp83zws",
+      "auto_transcript": null,
+      "whisper_transcript": null,
+      "comparison": null,
+      "errors": [
+        "Download failed: Unknown error"
+      ]
+    }
+  ]
+}

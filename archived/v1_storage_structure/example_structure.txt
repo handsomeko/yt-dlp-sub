@@ -1,0 +1,40 @@
+# V1 Storage Structure Example (DEPRECATED)
+
+## Actual V1 Directory Layout:
+/Volumes/Seagate Exp/Mac 2025/code/yt-dl-sub/downloads/
+├── audio/
+│   └── UC6t1O76G0jYXOAoYCm153dA/
+│       └── GT0jtVjRy2E/
+│           └── How we restructured Airtable's entire org for AI.opus
+├── transcripts/
+│   └── UC6t1O76G0jYXOAoYCm153dA/
+│       └── GT0jtVjRy2E/
+│           ├── GT0jtVjRy2E.en.srt    # ❌ Using video_id as filename
+│           └── GT0jtVjRy2E.en.txt    # ❌ Using video_id as filename
+├── videos/
+│   └── UC6t1O76G0jYXOAoYCm153dA/
+│       └── GT0jtVjRy2E/
+│           └── How we restructured Airtable's entire org for AI.mp4
+├── content/
+│   └── UC6t1O76G0jYXOAoYCm153dA/
+│       └── GT0jtVjRy2E/
+│           ├── blog_{job_id}.txt
+│           └── social_{job_id}.txt
+└── metadata/
+    └── UC6t1O76G0jYXOAoYCm153dA/
+        └── GT0jtVjRy2E/
+            └── metadata.json
+
+## Problems with V1:
+1. Type-first organization (audio/, transcripts/) splits related files
+2. Inconsistent naming: some use video_title, others use video_id
+3. No channel-level metadata
+4. No processing completion markers
+5. Difficult to see all files for one video at a glance
+
+## V2 Improvements:
+- Channel → Video hierarchy (everything for one video in one place)
+- Consistent human-readable filenames using video_title
+- Channel and video index files
+- Processing completion markers
+- Better metadata organization

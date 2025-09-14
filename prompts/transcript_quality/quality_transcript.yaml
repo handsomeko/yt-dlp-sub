@@ -1,0 +1,115 @@
+# Transcript Quality Check Prompts
+# These templates use Jinja2 syntax for variable substitution
+
+name: transcript_quality_default
+content_type: quality_transcript
+description: Default transcript quality evaluation prompt
+version: 1
+variables:
+  - transcript
+  - video_duration
+  - video_title
+  - channel_name
+  - extraction_method
+
+template: |
+  Analyze this video transcript for quality and completeness.
+  
+  Video Title: {{ video_title }}
+  Channel: {{ channel_name | default('Unknown') }}
+  Duration: {{ video_duration | format_duration }}
+  Extraction Method: {{ extraction_method | default('unknown') }}
+  
+  Transcript to evaluate ({{ transcript | word_count }} words):
+  {{ transcript | truncate_words(2000) }}
+  
+  Respond with ONLY a valid JSON object (no markdown, no extra text):
+  {
+    "score": <integer 0-100>,
+    "pass": <true or false>,
+    "completeness": <integer 0-100>,
+    "coherence": <integer 0-100>,
+    "accuracy": <integer 0-100>,
+    "issues": [<list of specific issues found as strings>],
+    "recommendations": [<list of specific improvements as strings>],
+    "missing_sections": [<list of likely missing sections>],
+    "quality_indicators": {
+      "has_speaker_labels": <true or false>,
+      "has_timestamps": <true or false>,
+      "sentence_structure": <"good", "fair", or "poor">,
+      "punctuation": <"good", "fair", or "poor">,
+      "repeated_words": <true or false>,
+      "garbled_sections": <true or false>
+    }
+  }
+  
+  Evaluation criteria:
+  - Completeness (0-100): Does the transcript cover the expected duration? Are there gaps?
+  - Coherence (0-100): Is the transcript understandable and well-structured?
+  - Accuracy (0-100): Are there obvious transcription errors, repeated words, or nonsense?
+  - Overall Quality Score: Weighted average of above metrics
+  
+  Set pass=true if score >= 70.
+  
+  Common issues to check:
+  - Missing beginning or ending
+  - Repeated phrases or stuttering
+  - Garbled or nonsensical sections
+  - Missing speaker identification
+  - Poor sentence boundaries
+  - Excessive filler words
+  - Technical terms incorrectly transcribed
+
+---
+
+name: transcript_quality_strict
+content_type: quality_transcript
+description: Strict transcript quality evaluation for high-value content
+version: 1
+variables:
+  - transcript
+  - video_duration
+  - video_title
+  - expected_topics
+  - min_word_count
+
+template: |
+  Perform a strict quality analysis of this transcript.
+  
+  Video: {{ video_title }}
+  Expected Duration: {{ video_duration | format_duration }}
+  Minimum Expected Words: {{ min_word_count | default(100) }}
+  Expected Topics: {{ expected_topics | default('Not specified') }}
+  
+  Transcript ({{ transcript | word_count }} words):
+  {{ transcript | truncate_words(3000) }}
+  
+  Respond with ONLY a valid JSON object:
+  {
+    "score": <integer 0-100>,
+    "pass": <true or false>,
+    "word_count": {{ transcript | word_count }},
+    "estimated_coverage": <percentage 0-100>,
+    "technical_accuracy": <integer 0-100>,
+    "readability_score": <integer 0-100>,
+    "issues": {
+      "critical": [<list of critical issues that must be fixed>],
+      "major": [<list of major issues affecting quality>],
+      "minor": [<list of minor issues for improvement>]
+    },
+    "content_analysis": {
+      "main_topics_found": [<list of identified topics>],
+      "expected_topics_missing": [<list of missing expected topics>],
+      "key_terms_identified": [<list of important terms found>],
+      "sentiment": <"positive", "negative", "neutral", or "mixed">
+    },
+    "recommendations": [<prioritized list of improvements>],
+    "requires_retranscription": <true or false>
+  }
+  
+  Use STRICT criteria:
+  - Score >= 85 for pass
+  - Penalize heavily for missing sections
+  - Check for topic coverage
+  - Verify technical term accuracy
+  - Assess overall readability

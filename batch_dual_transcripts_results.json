@@ -1,0 +1,66 @@
+{
+  "timestamp": "2025-09-06 10:16:59",
+  "total_processing_time": 215.2817349433899,
+  "videos_processed": 3,
+  "successful_auto": 0,
+  "successful_whisper": 0,
+  "results": [
+    {
+      "video_id": "xKsJ7BXLs8I",
+      "video_title": "How 1 Solopreneur Turned Excel Pain into $40K MRR (FormulaBot)",
+      "video_url": "https://www.youtube.com/watch?v=xKsJ7BXLs8I",
+      "auto_transcript": {
+        "status": "failed",
+        "error": "'SubtitleExtractionResult' object has no attribute 'error'"
+      },
+      "whisper_transcript": {
+        "status": "failed",
+        "error": "No transcript extraction method succeeded"
+      },
+      "errors": [
+        "Auto extraction error: 'SubtitleExtractionResult' object has no attribute 'error'",
+        "Whisper failed: No transcript extraction method succeeded"
+      ],
+      "processing_time": 99.77778005599976,
+      "duration": 27
+    },
+    {
+      "video_id": "ZsXmgmYHzxs",
+      "video_title": "How Tony Dinh Turned ChatGPT into a $45K/Month Solo Machine",
+      "video_url": "https://www.youtube.com/watch?v=ZsXmgmYHzxs",
+      "auto_transcript": {
+        "status": "failed",
+        "error": "'SubtitleExtractionResult' object has no attribute 'error'"
+      },
+      "whisper_transcript": {
+        "status": "failed",
+        "error": "Unknown error"
+      },
+      "errors": [
+        "Auto extraction error: 'SubtitleExtractionResult' object has no attribute 'error'",
+        "Whisper failed: None"
+      ],
+      "processing_time": 76.17118978500366,
+      "duration": 21
+    },
+    {
+      "video_id": "7fzf0XHiQeQ",
+      "video_title": "$0 to $45M ARR Jasper AI’s First User Strategy Unlocked",
+      "video_url": "https://www.youtube.com/watch?v=7fzf0XHiQeQ",
+      "auto_transcript": {
+        "status": "failed",
+        "error": "'SubtitleExtractionResult' object has no attribute 'error'"
+      },
+      "whisper_transcript": {
+        "status": "failed",
+        "error": "Unknown error"
+      },
+      "errors": [
+        "Auto extraction error: 'SubtitleExtractionResult' object has no attribute 'error'",
+        "Whisper failed: None"
+      ],
+      "processing_time": 35.32269263267517,
+      "duration": 18
+    }
+  ]
+}

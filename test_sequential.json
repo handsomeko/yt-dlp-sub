@@ -1,0 +1,14 @@
+{
+  "channels": [
+    {
+      "url": "https://www.youtube.com/@逍遙健康指南",
+      "name": "Channel 1 - 逍遙健康指南",
+      "limit": 1
+    },
+    {
+      "url": "https://www.youtube.com/@health-k6s",  
+      "name": "Channel 2 - Health",
+      "limit": 1
+    }
+  ]
+}

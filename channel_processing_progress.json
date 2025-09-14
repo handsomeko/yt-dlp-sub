@@ -1,0 +1,22 @@
+{
+  "completed_channels": {
+    "@\u900d\u9059\u5065\u5eb7\u6307\u5357": {
+      "completed_at": "2025-09-13T10:43:25.085510",
+      "details": {
+        "successful": 0,
+        "failed": 0,
+        "skipped": 1
+      }
+    },
+    "@health-k6s": {
+      "completed_at": "2025-09-13T10:43:37.662730",
+      "details": {
+        "successful": 0,
+        "failed": 0,
+        "skipped": 1
+      }
+    }
+  },
+  "failed_channels": {},
+  "started_channels": {}
+}

@@ -1,0 +1,41 @@
+{
+  "video_info": {
+    "channel_id": "UCsT0YIqwnpJCM-mx7-gSA4Q",
+    "video_id": "m8WomdCLBqE",
+    "video_title": "Is AI making us dumber? Maybe. | Charlie Gedeon | TEDxSherbrooke Street West",
+    "video_url": "https://www.youtube.com/watch?v=m8WomdCLBqE",
+    "duration_seconds": 847,
+    "audio_path": "/Volumes/Seagate Exp/Mac 2025/code/yt-dl-sub/downloads/UCsT0YIqwnpJCM-mx7-gSA4Q/m8WomdCLBqE/media/Is AI making us dumber_ Maybe. _ Charlie Gedeon _ TEDxSherbrooke Street West.opus"
+  },
+  "auto_transcript": {
+    "status": "success",
+    "languages": [
+      "en"
+    ],
+    "files_created": [
+      "Is AI making us dumber? Maybe. _ Charlie Gedeon _ TEDxSherbrooke Street West_auto.en.srt",
+      "Is AI making us dumber? Maybe. _ Charlie Gedeon _ TEDxSherbrooke Street West_auto.en.txt"
+    ],
+    "txt_content_preview": "Kind: captions\nLanguage: en\nCan<00:00:00.960><c> AI</c><00:00:01.600><c> help</c><00:00:01.839><c> us</c><00:00:02.080><c> learn?</c>\nCan AI help us learn?\nCan AI help us learn?\nSome<00:00:03.919><c> ...",
+    "word_count": 7082,
+    "file_sizes": {
+      "txt": 81001,
+      "srt": 122595
+    },
+    "processing_time": 9.479061841964722,
+    "methods_used": [
+      "yt-dlp-alt-1"
+    ]
+  },
+  "whisper_transcript": {
+    "status": "failed",
+    "error": "Unknown error",
+    "processing_time": 80.3071448802948
+  },
+  "comparison": null,
+  "errors": [
+    "Whisper failed: None"
+  ],
+  "total_processing_time": 89.78725290298462,
+  "timestamp": "2025-09-06 10:21:30"
+}

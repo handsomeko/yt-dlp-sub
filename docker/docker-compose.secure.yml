@@ -1,0 +1,259 @@
+version: '3.8'
+
+# Secure Docker Compose configuration
+# Addresses Issue #113 with comprehensive security controls
+
+services:
+  yt-dl-sub:
+    build:
+      context: ..
+      dockerfile: docker/Dockerfile.secure
+    image: yt-dl-sub:secure
+    container_name: yt-dl-sub-secure
+    
+    # Security configurations
+    security_opt:
+      - no-new-privileges:true
+      - apparmor=docker-yt-dl-sub
+      - seccomp=/etc/docker/seccomp/yt-dl-sub.json
+    
+    # Capability management
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE  # Only if binding to port < 1024
+    
+    # User configuration (non-root)
+    user: "1000:1000"
+    
+    # Read-only root filesystem
+    read_only: true
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 2G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    
+    # Network configuration
+    networks:
+      - yt-dl-sub-net
+    ports:
+      - "127.0.0.1:8000:8000"  # Bind only to localhost
+    
+    # Volume mounts (minimal required)
+    volumes:
+      # Data directory (read-write)
+      - type: volume
+        source: app-data
+        target: /app/data
+        volume:
+          nocopy: true
+      
+      # Logs directory (read-write)
+      - type: volume
+        source: app-logs
+        target: /app/logs
+        volume:
+          nocopy: true
+      
+      # Temp directory (read-write)
+      - type: tmpfs
+        target: /app/temp
+        tmpfs:
+          size: 100M
+          mode: 0700
+    
+    # Environment variables
+    environment:
+      - DEPLOYMENT_MODE=DOCKER
+      - STORAGE_PATH=/app/data
+      - LOG_PATH=/app/logs
+      - DATABASE_URL=sqlite:////app/data/app.db
+      - REDIS_URL=redis://redis:6379/0
+      - API_KEY=${API_KEY:-}  # Load from .env
+      - JWT_SECRET=${JWT_SECRET:-}  # Load from .env
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY:-}  # Load from .env
+    
+    # Restart policy
+    restart: unless-stopped
+    
+    # Logging configuration
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+        labels: "service=yt-dl-sub"
+    
+    # Dependencies
+    depends_on:
+      redis:
+        condition: service_healthy
+      clamav:
+        condition: service_healthy
+
+  # Redis service (for job queue)
+  redis:
+    image: redis:7-alpine
+    container_name: yt-dl-sub-redis
+    command: redis-server --appendonly yes --requirepass ${REDIS_PASSWORD:-changeme}
+    
+    # Security
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - SETUID
+      - SETGID
+    
+    # Non-root user
+    user: "999:999"
+    
+    # Read-only filesystem
+    read_only: true
+    
+    # Volumes
+    volumes:
+      - type: volume
+        source: redis-data
+        target: /data
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 50M
+    
+    # Network
+    networks:
+      - yt-dl-sub-net
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "redis-cli", "--no-auth-warning", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 256M
+    
+    restart: unless-stopped
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # ClamAV antivirus service (for file scanning)
+  clamav:
+    image: clamav/clamav:stable
+    container_name: yt-dl-sub-clamav
+    
+    # Security
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - DAC_OVERRIDE
+      - SETUID
+      - SETGID
+    
+    # Volumes
+    volumes:
+      - type: volume
+        source: clamav-db
+        target: /var/lib/clamav
+      - type: tmpfs
+        target: /tmp
+        tmpfs:
+          size: 200M
+    
+    # Network
+    networks:
+      - yt-dl-sub-net
+    
+    # Health check
+    healthcheck:
+      test: ["CMD", "clamdcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+    
+    # Resource limits
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 1G
+    
+    restart: unless-stopped
+    
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+# Networks
+networks:
+  yt-dl-sub-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/24
+    driver_opts:
+      com.docker.network.bridge.name: br-yt-dl-sub
+      com.docker.network.bridge.enable_icc: "false"  # Disable inter-container communication
+      com.docker.network.bridge.enable_ip_masquerade: "true"
+
+# Volumes
+volumes:
+  app-data:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${HOST_DATA_PATH:-./data}
+  
+  app-logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${HOST_LOGS_PATH:-./logs}
+  
+  redis-data:
+    driver: local
+  
+  clamav-db:
+    driver: local
+
+# Secrets (Docker Swarm mode)
+secrets:
+  api_key:
+    external: true
+  jwt_secret:
+    external: true
+  encryption_key:
+    external: true
+  redis_password:
+    external: true

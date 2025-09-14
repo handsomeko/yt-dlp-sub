@@ -1,0 +1,44 @@
+# Summary Generation Prompts
+# These templates use Jinja2 syntax for variable substitution
+
+name: summary_default
+content_type: summary
+description: Default summary generation prompt
+version: 1
+variables:
+  - title
+  - transcript
+  - duration
+  - channel_name
+
+template: |
+  Create a comprehensive summary of this video transcript.
+  
+  Video Title: {{ title }}
+  Channel: {{ channel_name | default('Unknown') }}
+  Duration: {{ duration | format_duration }}
+  
+  Transcript:
+  {{ transcript | truncate_words(1500) }}
+  
+  Please provide:
+  
+  1. **Executive Summary** (1 paragraph, 50-75 words)
+     - Capture the main message in a single, clear paragraph
+  
+  2. **Key Points** (3-5 bullet points)
+     - Extract the most important insights or findings
+     - Each point should be self-contained and actionable
+  
+  3. **Main Topics Covered**
+     - List the primary subjects discussed
+     - Include brief descriptions for each
+  
+  4. **Notable Quotes or Examples**
+     - Include 2-3 memorable quotes or examples if present
+  
+  5. **Takeaways and Action Items**
+     - What should the viewer remember?
+     - What actions can they take based on this content?
+  
+  Keep the summary factual and objective. Focus on clarity and completeness.

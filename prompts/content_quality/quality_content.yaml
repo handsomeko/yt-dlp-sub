@@ -1,0 +1,254 @@
+# Content Quality Check Prompts
+# These templates use Jinja2 syntax for variable substitution
+
+name: content_quality_blog
+content_type: quality_content_blog
+description: Blog post quality evaluation prompt
+version: 1
+variables:
+  - content
+  - source_transcript
+  - video_title
+  - target_word_count
+  - tone
+
+template: |
+  Evaluate this generated blog post for quality.
+  
+  Original Video: {{ video_title }}
+  Target Length: {{ target_word_count | default(800) }} words
+  Target Tone: {{ tone | default('professional') }}
+  
+  Generated Blog Post ({{ content | word_count }} words):
+  {{ content }}
+  
+  {% if source_transcript %}
+  Source Transcript Summary (first 500 words):
+  {{ source_transcript | truncate_words(500) }}
+  {% endif %}
+  
+  Respond with ONLY a valid JSON object:
+  {
+    "score": <integer 0-100>,
+    "pass": <true or false>,
+    "format_correct": <true or false>,
+    "length_appropriate": <true or false>,
+    "structure_analysis": {
+      "has_compelling_title": <true or false>,
+      "has_introduction": <true or false>,
+      "has_clear_sections": <true or false>,
+      "has_conclusion": <true or false>,
+      "has_call_to_action": <true or false>
+    },
+    "content_quality": {
+      "accuracy_to_source": <integer 0-100>,
+      "readability": <integer 0-100>,
+      "engagement": <integer 0-100>,
+      "seo_optimization": <integer 0-100>,
+      "tone_consistency": <integer 0-100>
+    },
+    "issues": [<list of specific issues>],
+    "improvements": [<list of specific improvements>],
+    "strengths": [<list of strong points>],
+    "publication_ready": <true or false>
+  }
+  
+  Evaluation criteria:
+  - Structure: Proper blog format with all required sections
+  - Accuracy: Faithful to source material without hallucination
+  - Readability: Clear, concise, well-organized paragraphs
+  - Engagement: Compelling and maintains reader interest
+  - SEO: Includes keywords naturally, good meta description potential
+  - Length: Within 20% of target word count
+  
+  Set pass=true if score >= 75.
+
+---
+
+name: content_quality_social
+content_type: quality_content_social
+description: Social media content quality evaluation prompt
+version: 1
+variables:
+  - content
+  - platform
+  - source_transcript
+  - video_title
+
+template: |
+  Evaluate this generated social media content.
+  
+  Platform: {{ platform | default('multiple') }}
+  Source Video: {{ video_title }}
+  
+  Generated Social Content:
+  {{ content }}
+  
+  {% if source_transcript %}
+  Key Points from Source (first 300 words):
+  {{ source_transcript | truncate_words(300) }}
+  {% endif %}
+  
+  Respond with ONLY a valid JSON object:
+  {
+    "score": <integer 0-100>,
+    "pass": <true or false>,
+    "platform_analysis": {
+      "twitter": {
+        "appropriate": <true or false>,
+        "character_count": <integer>,
+        "thread_structure": <"good", "fair", "poor", or "n/a">,
+        "hashtag_quality": <"good", "fair", "poor", or "n/a">
+      },
+      "linkedin": {
+        "appropriate": <true or false>,
+        "professional_tone": <true or false>,
+        "length_optimal": <true or false>
+      },
+      "instagram": {
+        "appropriate": <true or false>,
+        "caption_engaging": <true or false>,
+        "hashtag_count": <integer>
+      }
+    },
+    "content_quality": {
+      "accuracy": <integer 0-100>,
+      "engagement_potential": <integer 0-100>,
+      "clarity": <integer 0-100>,
+      "call_to_action": <true or false>,
+      "shareability": <integer 0-100>
+    },
+    "issues": [<list of issues>],
+    "improvements": [<list of improvements>],
+    "viral_potential": <"high", "medium", "low">
+  }
+  
+  Criteria:
+  - Platform appropriateness
+  - Character/length limits
+  - Engagement potential
+  - Hashtag relevance
+  - Clear messaging
+  - Shareability
+  
+  Set pass=true if score >= 70.
+
+---
+
+name: content_quality_summary
+content_type: quality_content_summary
+description: Summary content quality evaluation prompt
+version: 1
+variables:
+  - content
+  - source_transcript
+  - video_title
+  - summary_type
+
+template: |
+  Evaluate this generated summary for quality and completeness.
+  
+  Video Title: {{ video_title }}
+  Summary Type: {{ summary_type | default('comprehensive') }}
+  
+  Generated Summary:
+  {{ content }}
+  
+  {% if source_transcript %}
+  Source Transcript (first 1000 words):
+  {{ source_transcript | truncate_words(1000) }}
+  {% endif %}
+  
+  Respond with ONLY a valid JSON object:
+  {
+    "score": <integer 0-100>,
+    "pass": <true or false>,
+    "completeness": <integer 0-100>,
+    "accuracy": <integer 0-100>,
+    "structure_analysis": {
+      "has_executive_summary": <true or false>,
+      "has_key_points": <true or false>,
+      "has_main_topics": <true or false>,
+      "has_takeaways": <true or false>,
+      "logical_flow": <"excellent", "good", "fair", "poor">
+    },
+    "content_quality": {
+      "captures_main_ideas": <integer 0-100>,
+      "no_hallucination": <true or false>,
+      "appropriate_length": <true or false>,
+      "clarity": <integer 0-100>,
+      "actionability": <integer 0-100>
+    },
+    "missing_elements": [<list of missing important points>],
+    "issues": [<list of issues>],
+    "improvements": [<list of improvements>]
+  }
+  
+  Evaluation criteria:
+  - Completeness: All main points covered
+  - Accuracy: No invented information
+  - Structure: Logical organization
+  - Clarity: Easy to understand
+  - Actionability: Useful takeaways
+  
+  Set pass=true if score >= 75.
+
+---
+
+name: content_quality_universal
+content_type: quality_content_any
+description: Universal content quality check for any content type
+version: 1
+variables:
+  - content
+  - content_type
+  - source_transcript
+  - requirements
+
+template: |
+  Evaluate this generated {{ content_type }} content for quality.
+  
+  Content Type: {{ content_type }}
+  Requirements: {{ requirements | default('Standard quality') }}
+  
+  Generated Content ({{ content | word_count }} words):
+  {{ content }}
+  
+  {% if source_transcript %}
+  Source Reference (first 500 words):
+  {{ source_transcript | truncate_words(500) }}
+  {% endif %}
+  
+  Respond with ONLY a valid JSON object:
+  {
+    "score": <integer 0-100>,
+    "pass": <true or false>,
+    "format_appropriate": <true or false>,
+    "accuracy_to_source": <integer 0-100>,
+    "quality_metrics": {
+      "clarity": <integer 0-100>,
+      "coherence": <integer 0-100>,
+      "completeness": <integer 0-100>,
+      "engagement": <integer 0-100>,
+      "professionalism": <integer 0-100>
+    },
+    "technical_issues": {
+      "grammar_errors": <true or false>,
+      "spelling_errors": <true or false>,
+      "formatting_issues": <true or false>,
+      "factual_errors": <true or false>
+    },
+    "strengths": [<list of strong points>],
+    "weaknesses": [<list of weak points>],
+    "improvements": [<list of specific improvements>],
+    "overall_assessment": <string description>
+  }
+  
+  General evaluation criteria:
+  - Format appropriateness for content type
+  - Accuracy to source material
+  - Overall quality and professionalism
+  - Technical correctness
+  - Engagement and readability
+  
+  Set pass=true if score >= 70.

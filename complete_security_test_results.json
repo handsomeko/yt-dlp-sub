@@ -1,0 +1,395 @@
+{
+  "timestamp": "2025-09-02T20:07:17.507196",
+  "total_tests": 49,
+  "passed": 5,
+  "failed": 44,
+  "pass_rate": 10.204081632653061,
+  "critical_failures": [
+    "SSRF Protection: http://127.0.0.1/admin",
+    "SSRF Protection: http://localhost:8080",
+    "SSRF Protection: http://169.254.169.254/latest/meta-data/",
+    "SSRF Protection: http://192.168.1.1",
+    "SSRF Protection: http://10.0.0.1",
+    "SSRF Protection: http://172.16.0.1",
+    "SSRF Protection: http://[::1]/admin",
+    "SSRF Protection: http://0.0.0.0:8080",
+    "SSRF Protection: file:///etc/passwd",
+    "SSRF Protection: gopher://localhost:8080",
+    "SSRF Protection: dict://localhost:11211",
+    "SSRF Protection: sftp://localhost",
+    "SSRF Protection: tftp://localhost/boot",
+    "SSRF Protection: ldap://localhost",
+    "SSRF Protection (Complete)",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection: pattern",
+    "ReDoS Protection (Complete)",
+    "CSV Injection: =cmd|'/c calc'!A1",
+    "CSV Injection: =1+1+cmd|'/c calc'!A",
+    "CSV Injection: @SUM(1+1)*cmd|'/c ca",
+    "CSV Injection: +1+cmd|'/c calc'!A1",
+    "CSV Injection: -1+cmd|'/c calc'!A1",
+    "CSV Injection: =1+1+cmd|' /C calc'!",
+    "CSV Injection: =cmd|' /C notepad'!'",
+    "CSV Injection: =cmd|'/c powershell ",
+    "CSV Injection: =HYPERLINK(\"http://e",
+    "CSV Injection: =10+20+cmd|'/c calc'",
+    "CSV Injection: =IMPORTXML(CONCAT(\"h",
+    "CSV Injection: =WEBSERVICE(\"http://",
+    "CSV Injection Protection (Complete)",
+    "Memory Exhaustion Protection",
+    "JWT Security",
+    "Advanced Path Traversal Protection",
+    "Complete Security Headers"
+  ],
+  "all_results": [
+    {
+      "timestamp": "2025-09-02T20:07:17.120041",
+      "test": "Server Health",
+      "passed": true,
+      "details": "Managers active: 17/40",
+      "critical": false
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.121245",
+      "test": "Authentication Required",
+      "passed": true,
+      "details": "",
+      "critical": false
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.258597",
+      "test": "Rate Limiting",
+      "passed": true,
+      "details": "Rate limit enforced",
+      "critical": false
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.259175",
+      "test": "SSRF Protection: http://127.0.0.1/admin",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.259731",
+      "test": "SSRF Protection: http://localhost:8080",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.260268",
+      "test": "SSRF Protection: http://169.254.169.254/latest/meta-data/",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.260820",
+      "test": "SSRF Protection: http://192.168.1.1",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.261383",
+      "test": "SSRF Protection: http://10.0.0.1",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.261899",
+      "test": "SSRF Protection: http://172.16.0.1",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.262421",
+      "test": "SSRF Protection: http://[::1]/admin",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.262963",
+      "test": "SSRF Protection: http://0.0.0.0:8080",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.263561",
+      "test": "SSRF Protection: file:///etc/passwd",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.264126",
+      "test": "SSRF Protection: gopher://localhost:8080",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.264686",
+      "test": "SSRF Protection: dict://localhost:11211",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.265232",
+      "test": "SSRF Protection: sftp://localhost",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.265778",
+      "test": "SSRF Protection: tftp://localhost/boot",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.266329",
+      "test": "SSRF Protection: ldap://localhost",
+      "passed": false,
+      "details": "Not blocked: 429",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.266333",
+      "test": "SSRF Protection (Complete)",
+      "passed": false,
+      "details": "Only blocked 0/14",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.266893",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.267413",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.267942",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.268779",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.269301",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.269846",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.270373",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.270891",
+      "test": "ReDoS Protection: pattern",
+      "passed": false,
+      "details": "Took 0.00s",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.270895",
+      "test": "ReDoS Protection (Complete)",
+      "passed": false,
+      "details": "Only blocked 0/8",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.278169",
+      "test": "SSTI Protection (Complete)",
+      "passed": true,
+      "details": "Blocked all 14 SSTI attempts",
+      "critical": false
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.278725",
+      "test": "CSV Injection: =cmd|'/c calc'!A1",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.279275",
+      "test": "CSV Injection: =1+1+cmd|'/c calc'!A",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.279808",
+      "test": "CSV Injection: @SUM(1+1)*cmd|'/c ca",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.280341",
+      "test": "CSV Injection: +1+cmd|'/c calc'!A1",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.280869",
+      "test": "CSV Injection: -1+cmd|'/c calc'!A1",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.281401",
+      "test": "CSV Injection: =1+1+cmd|' /C calc'!",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.281923",
+      "test": "CSV Injection: =cmd|' /C notepad'!'",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.282442",
+      "test": "CSV Injection: =cmd|'/c powershell ",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.282958",
+      "test": "CSV Injection: =HYPERLINK(\"http://e",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.283489",
+      "test": "CSV Injection: =10+20+cmd|'/c calc'",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.284021",
+      "test": "CSV Injection: =IMPORTXML(CONCAT(\"h",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.284573",
+      "test": "CSV Injection: =WEBSERVICE(\"http://",
+      "passed": false,
+      "details": "Not blocked",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.284576",
+      "test": "CSV Injection Protection (Complete)",
+      "passed": false,
+      "details": "Only blocked 0/12",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.339085",
+      "test": "Storage Quota Protection",
+      "passed": false,
+      "details": "May have limits",
+      "critical": false
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.469467",
+      "test": "Memory Exhaustion Protection",
+      "passed": false,
+      "details": "Large payload accepted",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.473305",
+      "test": "JWT Security",
+      "passed": false,
+      "details": "Only blocked 0/3",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.475448",
+      "test": "DNS Rebinding Protection",
+      "passed": false,
+      "details": "Blocked 0/3 DNS rebinding attempts",
+      "critical": false
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.496029",
+      "test": "Race Condition Protection",
+      "passed": true,
+      "details": "All concurrent requests handled safely",
+      "critical": false
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.501901",
+      "test": "Advanced Path Traversal Protection",
+      "passed": false,
+      "details": "Only blocked 0/10",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.502456",
+      "test": "Complete Security Headers",
+      "passed": false,
+      "details": "Missing: ['X-XSS-Protection', 'X-Content-Type-Options', 'X-Frame-Options', 'Strict-Transport-Security', 'Content-Security-Policy', 'Referrer-Policy', 'Permissions-Policy', 'X-Security-Managers', 'X-SSRF-Protection', 'X-ReDoS-Protection', 'X-CSV-Injection-Protection', 'X-SSTI-Protection']",
+      "critical": true
+    },
+    {
+      "timestamp": "2025-09-02T20:07:17.507049",
+      "test": "AI Prompt Injection Protection",
+      "passed": false,
+      "details": "Only blocked 0/8",
+      "critical": false
+    }
+  ]
+}

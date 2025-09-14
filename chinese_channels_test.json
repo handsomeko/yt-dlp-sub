@@ -1,0 +1,39 @@
+{
+  "channels": [
+    {
+      "url": "https://www.youtube.com/@逍遙健康指南",
+      "name": "逍遙健康指南",
+      "priority": "high",
+      "translate": true,
+      "target_language": "en",
+      "limit": 2
+    },
+    {
+      "url": "https://www.youtube.com/@health-k6s",
+      "name": "Health Channel",
+      "priority": "normal",
+      "translate": true,
+      "limit": 2
+    },
+    {
+      "url": "https://www.youtube.com/@healthdiary7",
+      "name": "Health Diary",
+      "priority": "normal",
+      "translate": true,
+      "limit": 2
+    },
+    {
+      "url": "https://www.youtube.com/@healthyeyes2",
+      "name": "Healthy Eyes",
+      "priority": "normal",
+      "translate": true,
+      "limit": 2
+    }
+  ],
+  "settings": {
+    "max_concurrent_workers": 6,
+    "min_workers": 2,
+    "continuous_mode": false,
+    "log_level": "INFO"
+  }
+}

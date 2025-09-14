@@ -1,0 +1,380 @@
+{
+  "timestamp": 1756777378.766426,
+  "overall_status": "\u26a0\ufe0f  SOME ISSUES FOUND",
+  "overall_passed": false,
+  "summary": {
+    "total_categories": 5,
+    "passed_categories": 3,
+    "total_tests": 47,
+    "passed_tests": 42,
+    "success_rate": "89.4%"
+  },
+  "category_results": {
+    "path_traversal_fixes": {
+      "status": "\u2705 PASSED",
+      "passed": true,
+      "test_count": 20,
+      "passed_count": 20,
+      "success_rate": "100.0%",
+      "details": [
+        {
+          "pattern": "../../../etc/passwd",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '..' in channel_id"
+        },
+        {
+          "pattern": "..\\..\\windows\\system32",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '..' in channel_id"
+        },
+        {
+          "pattern": "%2e%2e%2f%2fetc%2fpasswd",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '%' in channel_id"
+        },
+        {
+          "pattern": "~/.ssh/id_rsa",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '~' in channel_id"
+        },
+        {
+          "pattern": "channel/../../../evil",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '..' in channel_id"
+        },
+        {
+          "pattern": "",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "channel_id cannot be empty"
+        },
+        {
+          "pattern": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "channel_id too long (max 50 characters)"
+        },
+        {
+          "pattern": "channel\u0000null",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "channel_id contains null bytes or control characters"
+        },
+        {
+          "pattern": "channel:colon",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character ':' in channel_id"
+        },
+        {
+          "pattern": "channel|pipe",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '|' in channel_id"
+        },
+        {
+          "pattern": "channel<redirect",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '<' in channel_id"
+        },
+        {
+          "pattern": "channel>output",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '>' in channel_id"
+        },
+        {
+          "pattern": "channel\"quote",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "Invalid character '\"' in channel_id"
+        },
+        {
+          "pattern": "channel'quote",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true,
+          "error": "channel_id contains invalid characters (only a-z, A-Z, 0-9, _, - allowed)"
+        },
+        {
+          "pattern": "UCchannel123",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true,
+          "sanitized": "UCchannel123"
+        },
+        {
+          "pattern": "video_abc_123",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true,
+          "sanitized": "video_abc_123"
+        },
+        {
+          "pattern": "normal-channel",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true,
+          "sanitized": "normal-channel"
+        },
+        {
+          "pattern": "Channel123",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true,
+          "sanitized": "Channel123"
+        },
+        {
+          "pattern": "test_video_456",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true,
+          "sanitized": "test_video_456"
+        },
+        {
+          "test": "safe_path_construction",
+          "passed": true
+        }
+      ]
+    },
+    "input_validation_system": {
+      "status": "\u274c FAILED",
+      "passed": false,
+      "test_count": 19,
+      "passed_count": 18,
+      "success_rate": "94.7%",
+      "details": [
+        {
+          "url": "javascript:alert('xss')",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "data:text/html,<script>alert('xss')</script>",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "file:///etc/passwd",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "vbscript:msgbox('xss')",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "../../../evil/path",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "http://example.com/path/../../../evil",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "https://evil.com/path\u0000null",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "ftp://evil.com/path'OR'1'='1",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "url": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+          "type": "safe",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true
+        },
+        {
+          "url": "https://youtu.be/dQw4w9WgXcQ",
+          "type": "safe",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true
+        },
+        {
+          "url": "http://example.com/safe-path",
+          "type": "safe",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true
+        },
+        {
+          "url": "https://api.example.com/v1/data",
+          "type": "safe",
+          "expected": "accept",
+          "actual": "accept",
+          "passed": true
+        },
+        {
+          "path": "../../../etc/passwd",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "path": "~/.ssh/id_rsa",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "accept",
+          "passed": false
+        },
+        {
+          "path": "file\u0000null.txt",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "path": "file:with:colons.txt",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "path": "file|with|pipes.txt",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "path": "file<redirect.txt",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        },
+        {
+          "path": "file>output.txt",
+          "type": "dangerous",
+          "expected": "reject",
+          "actual": "reject",
+          "passed": true
+        }
+      ]
+    },
+    "thread_safety_fixes": {
+      "status": "\u2705 PASSED",
+      "passed": true,
+      "test_count": 1,
+      "passed_count": 1,
+      "success_rate": "100.0%",
+      "details": [
+        {
+          "test": "deadlock_prevention",
+          "passed": true,
+          "success_count": 5,
+          "total_threads": 5
+        }
+      ]
+    },
+    "storage_path_security": {
+      "status": "\u2705 PASSED",
+      "passed": true,
+      "test_count": 3,
+      "passed_count": 3,
+      "success_rate": "100.0%",
+      "details": [
+        {
+          "channel_id": "UCchannel123",
+          "video_id": "video456",
+          "content_type": "audio",
+          "passed": true,
+          "path": "/var/folders/kb/f430kzzj6kb2n92v84p5dnx80000gn/T/verify_core_fixes_pvsu7wd1/UCchannel123/video456/media/opus_deo456.opus"
+        },
+        {
+          "channel_id": "channel_abc",
+          "video_id": "vid_123",
+          "content_type": "transcript",
+          "passed": true,
+          "path": "/var/folders/kb/f430kzzj6kb2n92v84p5dnx80000gn/T/verify_core_fixes_pvsu7wd1/channel_abc/vid_123/transcripts/srt.srt"
+        },
+        {
+          "channel_id": "test-channel",
+          "video_id": "test-video",
+          "content_type": "metadata",
+          "passed": true,
+          "path": "/var/folders/kb/f430kzzj6kb2n92v84p5dnx80000gn/T/verify_core_fixes_pvsu7wd1/test-channel/test-video/.metadata.json"
+        }
+      ]
+    },
+    "error_handling_fixes": {
+      "status": "\u274c FAILED",
+      "passed": false,
+      "test_count": 4,
+      "passed_count": 0,
+      "success_rate": "0.0%",
+      "details": [
+        {
+          "category": "youtube_api",
+          "test_type": "sync",
+          "passed": false,
+          "has_recovery": false
+        },
+        {
+          "category": "filesystem",
+          "test_type": "sync",
+          "passed": false,
+          "has_recovery": false
+        },
+        {
+          "category": "network",
+          "test_type": "sync",
+          "passed": false,
+          "has_recovery": false
+        },
+        {
+          "category": "validation",
+          "test_type": "sync",
+          "passed": false,
+          "has_recovery": false
+        }
+      ]
+    }
+  }
+}

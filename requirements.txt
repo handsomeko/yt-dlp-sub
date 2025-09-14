@@ -1,0 +1,68 @@
+# Core dependencies
+yt-dlp==2024.12.23
+youtube-transcript-api==0.6.3
+
+# API dependencies  
+fastapi==0.115.6
+uvicorn[standard]==0.34.0
+pydantic==2.10.4
+pydantic-settings==2.10.1
+
+# Database
+sqlalchemy==2.0.36
+aiosqlite==0.20.0
+
+# CLI
+click==8.1.7
+
+# Utilities
+feedparser==6.0.11
+python-dotenv==1.0.1
+httpx==0.28.1
+celery==5.4.0
+redis==5.2.1
+aiofiles==24.1.0
+psutil==6.1.0  # System resource monitoring for dynamic scaling
+
+# Google Drive integration
+google-api-python-client==2.154.0
+google-auth-httplib2==0.2.0
+google-auth-oauthlib==1.2.1
+
+# Airtable integration
+pyairtable==2.3.3
+
+# AI/Transcription
+openai-whisper==20250625
+anthropic==0.39.0
+openai==1.57.0
+google-generativeai==0.8.3
+
+# Template Engine
+jinja2==3.1.4
+
+# Statistical Analysis for A/B Testing
+numpy==1.26.4
+scipy==1.14.1
+
+# Security dependencies (CRITICAL - PREVIOUSLY MISSING!)
+cryptography==43.0.3      # Required for encryption, key management
+aiohttp==3.11.11          # Required for secure HTTP, circuit breakers
+spacy==3.8.3              # Required for AI/ML attack detection
+PyJWT==2.10.1             # Required for JWT token security
+bcrypt==4.2.1             # Required for secure password hashing
+python-jose==3.3.0        # Required for OAuth security
+python-multipart==0.0.20  # Required for secure file upload
+bandit==1.8.0             # Static security analysis
+safety==3.2.12            # Vulnerability checking
+passlib==1.7.4            # Password hashing utilities
+itsdangerous==2.2.0       # Secure token generation
+pyotp==2.9.0              # Two-factor authentication
+python-secrets==24.2.0    # Secure random generation
+defusedxml==0.7.1         # XML bomb protection
+bleach==6.2.0             # HTML sanitization
+
+# Development
+pytest==8.3.4
+pytest-asyncio==0.25.2
+black==24.10.0

@@ -1,0 +1,155 @@
+{
+  "summary": {
+    "total_tests": 24,
+    "passed": 7,
+    "failed": 17,
+    "pass_rate": 29.166666666666668,
+    "timestamp": "2025-09-02T16:19:05.532172"
+  },
+  "detailed_results": [
+    {
+      "test": "Server Running",
+      "passed": true,
+      "details": "Status: 200",
+      "timestamp": "2025-09-02T16:19:03.896200"
+    },
+    {
+      "test": "Security Active",
+      "passed": true,
+      "details": "Security flag: True",
+      "timestamp": "2025-09-02T16:19:03.896215"
+    },
+    {
+      "test": "Auth Required: /video/info",
+      "passed": false,
+      "details": "Expected 401, got 403",
+      "timestamp": "2025-09-02T16:19:03.901412"
+    },
+    {
+      "test": "Auth Required: /video/download",
+      "passed": false,
+      "details": "Expected 401, got 403",
+      "timestamp": "2025-09-02T16:19:03.906013"
+    },
+    {
+      "test": "Auth Required: /audio/download",
+      "passed": false,
+      "details": "Expected 401, got 403",
+      "timestamp": "2025-09-02T16:19:03.907981"
+    },
+    {
+      "test": "Auth Required: /transcript/extract",
+      "passed": false,
+      "details": "Expected 401, got 403",
+      "timestamp": "2025-09-02T16:19:03.910269"
+    },
+    {
+      "test": "Auth Required: /channel/add",
+      "passed": false,
+      "details": "Expected 401, got 403",
+      "timestamp": "2025-09-02T16:19:03.912427"
+    },
+    {
+      "test": "Auth Required: /channel/list",
+      "passed": false,
+      "details": "Expected 401, got 403",
+      "timestamp": "2025-09-02T16:19:03.913986"
+    },
+    {
+      "test": "Valid API Key",
+      "passed": true,
+      "details": "Access granted with valid key",
+      "timestamp": "2025-09-02T16:19:03.915692"
+    },
+    {
+      "test": "Invalid API Key",
+      "passed": true,
+      "details": "Invalid key properly rejected",
+      "timestamp": "2025-09-02T16:19:03.917483"
+    },
+    {
+      "test": "Read Permission",
+      "passed": true,
+      "details": "Read-only key can access read endpoints",
+      "timestamp": "2025-09-02T16:19:03.919027"
+    },
+    {
+      "test": "Write Permission Denied",
+      "passed": true,
+      "details": "Write access properly denied",
+      "timestamp": "2025-09-02T16:19:03.924735"
+    },
+    {
+      "test": "Rate Limiting",
+      "passed": false,
+      "details": "Rate limit not triggered after 87 requests",
+      "timestamp": "2025-09-02T16:19:05.495284"
+    },
+    {
+      "test": "Input Validation: javascript:alert('xs...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.498549"
+    },
+    {
+      "test": "Input Validation: ../../../etc/passwd...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.501293"
+    },
+    {
+      "test": "Input Validation: https://evil.com/mal...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.505721"
+    },
+    {
+      "test": "Input Validation: file:///etc/passwd...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.508844"
+    },
+    {
+      "test": "Input Validation: <script>alert('xss')...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.511927"
+    },
+    {
+      "test": "Input Validation: '; DROP TABLE users;...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.514903"
+    },
+    {
+      "test": "Input Validation: $(rm -rf /)...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.517768"
+    },
+    {
+      "test": "Input Validation: `whoami`...",
+      "passed": false,
+      "details": "Expected 400, got 500",
+      "timestamp": "2025-09-02T16:19:05.520943"
+    },
+    {
+      "test": "Security Headers",
+      "passed": false,
+      "details": "Missing headers: X-XSS-Protection, X-Content-Type-Options, X-Frame-Options, Strict-Transport-Security, Content-Security-Policy, Referrer-Policy, Server (wrong value)",
+      "timestamp": "2025-09-02T16:19:05.524581"
+    },
+    {
+      "test": "CORS Protection",
+      "passed": true,
+      "details": "CORS properly configured",
+      "timestamp": "2025-09-02T16:19:05.527602"
+    },
+    {
+      "test": "Error Handling",
+      "passed": false,
+      "details": "Request failed: Expecting value: line 1 column 1 (char 0)",
+      "timestamp": "2025-09-02T16:19:05.531550"
+    }
+  ]
+}

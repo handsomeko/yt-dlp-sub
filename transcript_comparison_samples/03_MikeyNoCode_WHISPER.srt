@@ -1,0 +1,879 @@
+1
+00:00:00,000 --> 00:00:06,560
+Have you ever wondered how apps like this one are making $500,000 every single month?
+
+2
+00:00:06,560 --> 00:00:12,240
+Well, what if I told you that I just built an exact copy of this million dollar app without
+
+3
+00:00:12,240 --> 00:00:16,320
+writing a single line of code? Now, I can hear you thinking already, but if you check out the
+
+4
+00:00:16,320 --> 00:00:21,519
+screenshot, you can see proof of the revenue that this type of app generates through the app store.
+
+5
+00:00:21,519 --> 00:00:28,960
+Half a million dollars every month, and here's a crazier part I used only one AI tool to build the
+
+6
+00:00:28,960 --> 00:00:34,719
+entire thing. Now, most people think that you need years of coding experience or a whole team of
+
+7
+00:00:34,719 --> 00:00:40,079
+developers to create profitable apps, but that's completely wrong. I'm about to show you the exact
+
+8
+00:00:40,079 --> 00:00:46,960
+step-by-step process that I use to recreate this successful workout tracking app, connect it to
+
+9
+00:00:46,960 --> 00:00:52,640
+Stripe for payments, and set up all of the premium features without touching a single line of code.
+
+10
+00:00:52,640 --> 00:00:58,880
+By the way, my name is Mikey, and my K-E-Y, and I've been experimenting with AI development tools
+
+11
+00:00:58,880 --> 00:01:05,519
+for the past year, and what I discovered is that there's one AI coding tool right now that's
+
+12
+00:01:05,519 --> 00:01:11,920
+absolutely crushing everything else, and it can literally build entire apps for you. In this video,
+
+13
+00:01:11,920 --> 00:01:17,519
+I'm going to walk you through my complete process. I'm going to show you the exact tool that I used,
+
+14
+00:01:17,519 --> 00:01:23,439
+and I'm going to prove that anyone you, me, even complete beginners, can build profitable apps in
+
+15
+00:01:23,439 --> 00:01:30,399
+2025. So, if you've ever wanted to create your own app, or make money from app development, or
+
+16
+00:01:30,399 --> 00:01:35,599
+we're just super curious about what's possible with AI right now, this video I promise you
+
+17
+00:01:35,599 --> 00:01:40,159
+is going to blow your mind. So, let's go ahead and dive right in. The AI tool that will take care of
+
+18
+00:01:40,159 --> 00:01:46,879
+everything for us today in this video will be Rocket.New. I added a special link in the description below,
+
+19
+00:01:46,879 --> 00:01:52,399
+so you can go ahead and check it out for yourself too. So, whenever I'm starting with a new app
+
+20
+00:01:52,399 --> 00:01:58,640
+build, the very first thing that I want to do is get a layout down. Something that shows you how
+
+21
+00:01:58,640 --> 00:02:04,560
+everything will be structured before we begin layering in features. It's pretty much like sketching
+
+22
+00:02:04,560 --> 00:02:09,840
+the blueprint of a house before deciding on the furniture. Now, this first step will give us a
+
+23
+00:02:09,840 --> 00:02:15,280
+clear picture of how the app will flow, and it'll also set the foundation for everything we're
+
+24
+00:02:15,280 --> 00:02:20,159
+going to add in later. So, for this build, again, we'll be using Rocket, and one of the biggest
+
+25
+00:02:20,159 --> 00:02:26,080
+advantages here of using Rocket is code ownership. Unlike other platforms that lock you in,
+
+26
+00:02:26,080 --> 00:02:32,159
+you own your own code completely. You can download it, you can modify it, you can post it anywhere
+
+27
+00:02:32,159 --> 00:02:38,400
+you want, even if you cancel your subscription, your apps, and your code remain yours forever.
+
+28
+00:02:38,400 --> 00:02:42,560
+All right, so here's what we're going to tell Rocket. Hey Rocket, let's build an awesome
+
+29
+00:02:42,560 --> 00:02:49,520
+mobile fitness app. First, please build the UI of the app, then we'll add some features
+
+30
+00:02:49,520 --> 00:02:55,439
+afterwards. Please build all the sections and the nav bar needed. All right, before we move on,
+
+31
+00:02:55,439 --> 00:03:00,879
+important disclaimer here, because building apps and making money online is not easy, despite
+
+32
+00:03:00,879 --> 00:03:06,000
+what other YouTubers might be saying. So, when I show you how to build an app, for example,
+
+33
+00:03:06,000 --> 00:03:12,560
+I'm demonstrating the technical process and the potential. I am not guaranteeing your results.
+
+34
+00:03:12,560 --> 00:03:17,199
+These AI tools are legit, and as you'll see, the techniques do work, but success as with all
+
+35
+00:03:17,199 --> 00:03:22,000
+things in life depends on your execution, your timing, and honestly some luck. Now most apps don't
+
+36
+00:03:22,000 --> 00:03:27,520
+make money right away, and many don't even make money at all. So, I'm not promising you're going
+
+37
+00:03:27,520 --> 00:03:32,560
+to get rich or that you go out and quit your job after this video. Now, this is not financial advice,
+
+38
+00:03:32,560 --> 00:03:39,599
+or a get rich quick scheme. I'm just showing you what's possible with these tools, and what you do
+
+39
+00:03:40,159 --> 00:03:45,360
+that knowledge is up to you. All right, so with those expectations set, let's go ahead and continue
+
+40
+00:03:45,360 --> 00:03:51,759
+building this app. So, Rocket responds by putting together a clean, elegant design for our fitness app.
+
+41
+00:03:51,759 --> 00:03:58,000
+All the major sections are there, the placeholders are neatly set, and the overall look already
+
+42
+00:03:58,080 --> 00:04:04,319
+feels polished even at this early stage. It is simple, but it gives us a working canvas that we
+
+43
+00:04:04,319 --> 00:04:08,639
+can start refining right away. So, let's go ahead and look through the app, and you can see here that
+
+44
+00:04:08,639 --> 00:04:15,840
+the structure is functional, but there is a small error. The nav bar doesn't appear on the home screen,
+
+45
+00:04:15,840 --> 00:04:22,639
+which might make the navigation look incomplete at first. But if I do tap into one of the sections,
+
+46
+00:04:22,719 --> 00:04:28,560
+the nav bar appears, and it works as expected. So, it is a promising start, but in the next step,
+
+47
+00:04:28,560 --> 00:04:34,319
+we'll make sure that the nav bar shows up everywhere so that our navigation feels seamless from
+
+48
+00:04:34,319 --> 00:04:40,000
+the very beginning. Now that we've got the basic layout in place, we are now going to go ahead and
+
+49
+00:04:40,000 --> 00:04:46,959
+take things up a notch. Now, the first version gave us a solid foundation, but the design still feels
+
+50
+00:04:46,959 --> 00:04:53,359
+pretty bare bones to me, and that nav bar isn't showing up consistently across our app. So,
+
+51
+00:04:53,359 --> 00:04:59,359
+what I want next is a cleaner, more modern look that works like a proper fitness app, and of course,
+
+52
+00:04:59,359 --> 00:05:04,719
+a fully working nav bar that ties the whole experience together. So, to accomplish all of that,
+
+53
+00:05:04,719 --> 00:05:09,839
+here's what we're going to ask Rocket, great job Rocket. Now, please improve the app's design,
+
+54
+00:05:09,839 --> 00:05:15,839
+give it a modern exercise look, and add a nav bar, and the other sections we may need focus on this
+
+55
+00:05:15,839 --> 00:05:22,000
+first, then we'll build more functionality later. And Rocket comes back with a much more polished
+
+56
+00:05:22,000 --> 00:05:28,399
+design. As you can see, the layout has been updated to look like a real exercise app, it's modern,
+
+57
+00:05:28,399 --> 00:05:34,959
+it's cohesive, and it's visually appealing. On top of all of that, we now have a responsive nav bar
+
+58
+00:05:34,959 --> 00:05:40,719
+that shows up consistently, which does let us move smoothly between different sections. Now,
+
+59
+00:05:40,720 --> 00:05:47,360
+another cool thing here is that Rocket just doesn't design scratch. Say, you already have a mock-up
+
+60
+00:05:47,360 --> 00:05:53,360
+sitting in Figma. Well, we can upload that directly into Rocket, and it will turn it into production
+
+61
+00:05:53,360 --> 00:05:59,600
+ready code with pixel-perfect accuracy. And that means no messy hand-offs to other developers,
+
+62
+00:05:59,600 --> 00:06:05,440
+and no, it doesn't manage the design kind of frustrations. Because your app looks exactly how you
+
+63
+00:06:05,439 --> 00:06:10,000
+imagined it and designed it. And speaking of design, you can see the difference here, right away,
+
+64
+00:06:10,000 --> 00:06:15,920
+and this updated build, these sections are more connected, the design flows better, and that nav
+
+65
+00:06:15,920 --> 00:06:22,079
+bar ties everything together in a way that makes navigation seamless. Now, this upgrade gives us the
+
+66
+00:06:22,079 --> 00:06:28,720
+confidence to move forward, knowing that our app doesn't just work structurally, but also looks the
+
+67
+00:06:28,720 --> 00:06:35,199
+part. Okay, so a fitness app without a workout tracker doesn't really make my sense. So this is where
+
+68
+00:06:35,199 --> 00:06:41,439
+we start building out the core functionality. And the goal here is to let our users create their
+
+69
+00:06:41,439 --> 00:06:47,360
+own workouts, track their own progress, and have that flexibility to manage sessions, however they
+
+70
+00:06:47,360 --> 00:06:53,279
+want. So let's make that happen by sending Rocket this kind of prompt. Great job Rocket. Let's focus
+
+71
+00:06:53,279 --> 00:06:59,680
+on building the actual functionality. Please create a workout tracker and a creator feature,
+
+72
+00:06:59,680 --> 00:07:06,560
+where the user can create their own custom workouts and track their progress in set workouts.
+
+73
+00:07:06,560 --> 00:07:12,800
+Give them the ability to add notes and progress photos in the workout plans they created. Also,
+
+74
+00:07:12,800 --> 00:07:19,920
+give them the ability to add exercises or sets while a workout they created is in progress.
+
+75
+00:07:19,920 --> 00:07:25,759
+Lastly, give them the ability to be able to finish workouts that they started at any time without
+
+76
+00:07:25,759 --> 00:07:32,879
+completing all the exercises. And now the workflow delivers a fully functional workout tracker
+
+77
+00:07:32,879 --> 00:07:38,399
+inside of our app. And our users can now design custom workout plans. They can attach notes,
+
+78
+00:07:38,399 --> 00:07:43,680
+they can include their own progress photos and add or remove sets as they go. And one of the best
+
+79
+00:07:43,680 --> 00:07:50,000
+parts is that workouts they don't have to be fully completed to a session. And this gives our
+
+80
+00:07:50,000 --> 00:07:56,079
+users more realistic control over how they train. Okay, so let's go ahead and try all of that out.
+
+81
+00:07:56,079 --> 00:08:01,199
+I'll create a workout called say calspanics and I'm going to start adding exercises. So first,
+
+82
+00:08:01,199 --> 00:08:05,439
+I'll add some push-ups and then some planks. But I'm also going to go ahead and try to delete the
+
+83
+00:08:05,439 --> 00:08:11,839
+planks. And there you go, the delete button works. And if something ever doesn't work as expected,
+
+84
+00:08:11,839 --> 00:08:18,399
+Rocket's built-in error detection will spot it and then offers a one-click fix. So instead of
+
+85
+00:08:18,479 --> 00:08:23,199
+having to dig through a bunch of code, we can just hit fix it and then move on. And after checking
+
+86
+00:08:23,199 --> 00:08:28,239
+that, I'll follow it up with some burpees. I'll save the workouts and then now I'm going to activate
+
+87
+00:08:28,239 --> 00:08:34,639
+it. From here, the app lets me run the workout. And if I decide to finish early, I can go ahead and
+
+88
+00:08:34,639 --> 00:08:41,120
+close it out without needing to complete a real asset. So it's flexible, it's practical, and it
+
+89
+00:08:41,120 --> 00:08:48,000
+feels like a real fitness tracker that adapts to our users. Every good fitness app needs a knowledge
+
+90
+00:08:48,320 --> 00:08:54,639
+base that users can rely on not just for tracking their own workouts, but also for guidance and
+
+91
+00:08:54,639 --> 00:09:01,279
+for ideas. Right now, the library section in our app has just been placeholder. So it's now time
+
+92
+00:09:01,279 --> 00:09:07,200
+to turn that into a real resource. And this means giving our users access to a complete workout
+
+93
+00:09:07,200 --> 00:09:12,720
+database filled with details and instructions that they can use at any time. So here's the prompt
+
+94
+00:09:12,720 --> 00:09:18,639
+we're going to send over to Rocket to make that all happen. Awesome job Rocket. Now please build the
+
+95
+00:09:18,639 --> 00:09:26,320
+workout library slash database, create a thorough database with instructions and details for several
+
+96
+00:09:26,320 --> 00:09:33,200
+workouts ranging from cardio, weightlifting, calisthenics, and body weight and the like. And with that,
+
+97
+00:09:33,200 --> 00:09:38,720
+Rocket built out a full workout library inside of our app. And now instead of empty place folders,
+
+98
+00:09:38,720 --> 00:09:44,399
+that section is now populated with a variety of exercises across different categories. And each
+
+99
+00:09:44,399 --> 00:09:51,120
+entry comes with clear instructions and details so that our users can follow along and incorporate
+
+100
+00:09:51,120 --> 00:09:57,200
+new routines into their own training. Doing this transforms the library into more than just a
+
+101
+00:09:57,200 --> 00:10:03,040
+section of the app. It's now a built in guide to help our users reach their fitness goals.
+
+102
+00:10:03,040 --> 00:10:08,000
+Alright, let's go ahead and explore this new database. So I'm going to head into the library here
+
+103
+00:10:08,000 --> 00:10:12,399
+and I'm going to start scrolling through some of the options that unlike before or everything just
+
+104
+00:10:12,399 --> 00:10:18,240
+kind of looked empty and unfinished. This section as you can see now holds real content. And look what I
+
+105
+00:10:18,240 --> 00:10:24,960
+said earlier, the workout entry now includes instructions and details which makes our app much more
+
+106
+00:10:24,960 --> 00:10:31,279
+complete and gives our users a reliable source of reference whenever they need or want to try
+
+107
+00:10:31,279 --> 00:10:37,039
+something new in their programming. We all know that workouts are great on their own but many people
+
+108
+00:10:37,039 --> 00:10:43,759
+do prefer following structured programs that lay out routines week by week. So for this next
+
+109
+00:10:43,759 --> 00:10:50,559
+step, I want to expand our library into something bigger, not just individual workouts but full-on
+
+110
+00:10:50,559 --> 00:10:56,559
+training programs like starting strength and strong lifts five by five. This will give users a clear
+
+111
+00:10:56,559 --> 00:11:02,639
+roadmap complete with principles and progression instead of just leaving them to piece things together
+
+112
+00:11:03,360 --> 00:11:08,399
+and to do that all it takes is this prop and rocket will handle the rest for us. Awesome job
+
+113
+00:11:08,399 --> 00:11:15,279
+rocket. Now please expand our application by creating optimized programs in our workout library.
+
+114
+00:11:15,279 --> 00:11:21,439
+Please create optimized programs such as starting strength, strong lifts, five by five and the
+
+115
+00:11:21,439 --> 00:11:28,000
+like. And from that problem, we get an expanded program library right inside of our app. So instead of
+
+116
+00:11:28,080 --> 00:11:35,039
+just exercises, we now have full-fledged programs that break down training into steps, routines,
+
+117
+00:11:35,039 --> 00:11:41,120
+and guiding principles. And these programs provide structure for anyone who wants to prove in
+
+118
+00:11:41,120 --> 00:11:46,639
+system to follow like five by five and they even include the extra details like nutrition advice
+
+119
+00:11:46,639 --> 00:11:51,600
+to keep the experience well rounded. All right, so check this out. We can see here under the
+
+120
+00:11:51,600 --> 00:11:58,320
+new program section, a full list of structured training plans is ready to explore and opening them
+
+121
+00:11:58,320 --> 00:12:06,480
+up reveals complete routines, clear principles, and supporting details that go beyond just exercises.
+
+122
+00:12:06,480 --> 00:12:11,759
+Even touching on nutrition, now compared to where we started off in this video, this addition
+
+123
+00:12:11,759 --> 00:12:18,160
+turns our app into a guide that can now carry our users through an entire fitness journey all step
+
+124
+00:12:18,719 --> 00:12:24,319
+by step. Now after all that building and refining, I think it's now finally time to step back and
+
+125
+00:12:24,319 --> 00:12:29,360
+see how everything comes together. So I'm going to walk you through the app section by section.
+
+126
+00:12:29,360 --> 00:12:35,679
+Now here, each part looks complete and it's all connected now seamlessly. Our app no longer is just
+
+127
+00:12:35,679 --> 00:12:41,360
+a collection of features, but it is a cohesive fitness platform. So let's put the workout creator
+
+128
+00:12:41,360 --> 00:12:46,319
+to the test. I'll go into the workout section here. I'm going to start building a new routine. I'll
+
+129
+00:12:46,320 --> 00:12:51,200
+also add a mix of different exercises. I'll save the plan and then I'm just going to launch it.
+
+130
+00:12:51,200 --> 00:12:56,960
+And while running the workout, I am going to drop in some personal notes of mine and even upload a
+
+131
+00:12:56,960 --> 00:13:03,120
+progress photo to show how flexible the feature really is. And just like we designed earlier,
+
+132
+00:13:03,120 --> 00:13:08,879
+I'm able to finish the workout early without having to complete every exercise. Now let's go ahead
+
+133
+00:13:08,879 --> 00:13:14,240
+and move into the program library to check out the specialized training programs that we recently
+
+134
+00:13:14,720 --> 00:13:20,480
+added. And there you go. It is a library, a planner and a workout companion, all at one place.
+
+135
+00:13:20,480 --> 00:13:26,399
+Now by this point, I'm hoping that we can all agree this doesn't feel just like a prototype
+
+136
+00:13:26,399 --> 00:13:32,720
+anymore. Because while other platforms struggle to make mobile apps actually work, rocket generates
+
+137
+00:13:32,720 --> 00:13:39,919
+real flutter apps that run seamlessly across both iOS and Android with true native performance.
+
+138
+00:13:39,919 --> 00:13:45,839
+And on top of that, it gives you a ready-made frame on the back end. So you can choose whether to
+
+139
+00:13:45,839 --> 00:13:52,159
+build a web app, a mobile app, or even an internal tool. Okay, so now that we've seen how the app
+
+140
+00:13:52,159 --> 00:13:57,120
+functions as a whole, it's time to add another feature because why not? That makes workouts more
+
+141
+00:13:57,120 --> 00:14:02,959
+practical in real life. And one feature that every fitness app needs is a reliable timer because
+
+142
+00:14:02,959 --> 00:14:07,120
+I don't want to open another app. So whether it's for rest periods, circuit training, or just
+
+143
+00:14:07,120 --> 00:14:13,120
+keeping workout structured, having a timer built directly into the dashboard makes the whole
+
+144
+00:14:13,120 --> 00:14:18,320
+experience more seamless. And to do that, we'll guide rocket with this prompt to get the feature
+
+145
+00:14:18,320 --> 00:14:25,200
+built in. Awesome. Now please create a timer in the home and dashboard. This should be at the front.
+
+146
+00:14:25,200 --> 00:14:31,200
+Make the default time as two minutes, which can be customized and edited manually. Also,
+
+147
+00:14:31,200 --> 00:14:38,560
+below the timer have a selection from our existing workouts that the user can tap. So the timer
+
+148
+00:14:38,560 --> 00:14:45,200
+starts automatically displaying the workout. Okay, so the output for that gives us a dedicated timer
+
+149
+00:14:45,200 --> 00:14:50,720
+right here on our dashboard. It isn't just a standalone tool either. It also doubles as a quick
+
+150
+00:14:50,720 --> 00:14:56,400
+start option for any workout that we choose since all the routines we've created are listed right
+
+151
+00:14:56,399 --> 00:15:02,240
+below it. And that way we can jump straight into training without any extra steps. So to showcase
+
+152
+00:15:02,240 --> 00:15:07,120
+this, I'm going to go ahead and run through a quick test. I'll adjust the timer settings here
+
+153
+00:15:07,120 --> 00:15:12,079
+by changing the minutes. I'm also going to try out the reset, start, and stop buttons just to make
+
+154
+00:15:12,079 --> 00:15:17,360
+sure everything works smoothly. And after that, I'm just going to go ahead and pick one of the workouts
+
+155
+00:15:17,360 --> 00:15:23,679
+from the mile workout section. And just like we planned, the timer automatically starts with that
+
+156
+00:15:23,679 --> 00:15:29,439
+routine that I just chose. Now, so when it comes to fitness, right, fitness apps, nothing's more
+
+157
+00:15:29,439 --> 00:15:36,559
+motivating than actually seeing your own progress. And that's why the final piece we're adding is a
+
+158
+00:15:36,559 --> 00:15:43,839
+proper progress tracker, something that goes beyond just logging workouts and really shows us how far
+
+159
+00:15:43,839 --> 00:15:51,039
+we've come. So I'm going to ask Rocket to build out a full progress section stats, body measurements,
+
+160
+00:15:51,039 --> 00:15:56,879
+and photo tracking to tie everything together, something like this. Great job Rocket. Now let's focus
+
+161
+00:15:56,879 --> 00:16:03,279
+on building the progress tracking feature and statistics. Please build the progress section and
+
+162
+00:16:03,279 --> 00:16:09,679
+allow the user to track their progress with advanced statistics that show personal records and
+
+163
+00:16:09,679 --> 00:16:16,240
+progression. Also add a body measurements tracker for weight and vitals and give the ability to
+
+164
+00:16:16,320 --> 00:16:22,720
+upload and add photos of the user's progress. And the output for that shows that the app now has a
+
+165
+00:16:22,720 --> 00:16:28,799
+working progress tracking section and everything inside of it is functional and it is ready to use.
+
+166
+00:16:28,799 --> 00:16:34,240
+So let's go ahead and try to upload a simple progress photo, then track my weight and body part
+
+167
+00:16:34,240 --> 00:16:40,799
+measurements here. And instantly the analytics will pop up showing clear stats and progression trends.
+
+168
+00:16:40,799 --> 00:16:45,360
+It's surprisingly satisfying to watch the numbers and the visuals all line up and it's all
+
+169
+00:16:45,360 --> 00:16:51,919
+proof that the workouts and routines are paying off. At this point the app has plenty of features
+
+170
+00:16:51,919 --> 00:16:58,000
+but without accounts and authentication it really is just a single user experience. So in order to
+
+171
+00:16:58,000 --> 00:17:03,840
+make it feel like a complete platform our next step is to hook it up with Superbase and add proper
+
+172
+00:17:03,840 --> 00:17:10,799
+login and sign up pages. The setup starts by heading over to my Superbase here, creating a new
+
+173
+00:17:10,879 --> 00:17:16,799
+project then going into the integration panel back in rocket and then just linking that project
+
+174
+00:17:16,799 --> 00:17:22,639
+into our app. And once that's ready here's the prompt we'll use. Now please integrate Superbase
+
+175
+00:17:22,639 --> 00:17:29,519
+and create the login and sign up pages. Also make sure that the profile section shows the logged in
+
+176
+00:17:29,519 --> 00:17:35,759
+user. And with that rocket takes care of the integration and generates a clean authentication flow.
+
+177
+00:17:35,839 --> 00:17:43,279
+We now have dedicated login and sign up screens along with user account handling powered by Superbase.
+
+178
+00:17:43,279 --> 00:17:49,039
+And along with that the app automatically pulls in profile information so that our logged in
+
+179
+00:17:49,039 --> 00:17:55,680
+user's name shows up right here on the dashboard and in the profile section. And this isn't just a
+
+180
+00:17:55,680 --> 00:18:02,640
+demo either because when rocket adds Superbase authentication or later on strike payments it is
+
+181
+00:18:02,640 --> 00:18:08,960
+production ready functionality. It's not placeholder code. So you can connect your accounts and then
+
+182
+00:18:08,960 --> 00:18:14,320
+start processing real logins or payments right away. And with that let's go ahead and test all of
+
+183
+00:18:14,320 --> 00:18:18,560
+that out. I'm going to create a fresh account here. I'm going to sign in and I'm going to move
+
+184
+00:18:18,560 --> 00:18:24,240
+into the app and everything so far works smoothly. The sign up goes through the login directs me
+
+185
+00:18:24,240 --> 00:18:29,840
+straight to my dashboard and my name displays exactly where it should. All right so far we've built
+
+186
+00:18:29,839 --> 00:18:36,159
+a ton of features tracking and authentication but to really turn this into a business we need a way
+
+187
+00:18:36,159 --> 00:18:41,599
+to monetize it and we'll be needing stripe here and the idea here is simple which is to give users a
+
+188
+00:18:41,599 --> 00:18:47,679
+smooth upgrade path so that they can unlock everything that our app has to offer. And to do that
+
+189
+00:18:47,679 --> 00:18:52,480
+I'm going to head over to my stripe. I'm going to grab the publishable and secret keys and then
+
+190
+00:18:52,480 --> 00:18:57,679
+I'm simply going to plug them into rockets integration panel under the stripe section. And after
+
+191
+00:18:57,680 --> 00:19:03,039
+setting that up I'm just going to drop in this final prompt. Great job rocket. Now lastly please
+
+192
+00:19:03,039 --> 00:19:09,600
+integrate stripe and have a simple checkout link using the keys that I provided. Please create a
+
+193
+00:19:09,600 --> 00:19:16,880
+new section called upgrade and within that section show the details and benefits of our apps premium
+
+194
+00:19:16,880 --> 00:19:22,400
+upgrade at the bottom of the section. We have a checkout button which redirects to stripe and with
+
+195
+00:19:22,480 --> 00:19:29,360
+that prompt rocket instantly adds an upgrade tab to our app right here and inside users can see
+
+196
+00:19:29,360 --> 00:19:35,040
+exactly what premium offers. Advanced tracking, expanded features and all the little extras that we
+
+197
+00:19:35,040 --> 00:19:40,080
+added earlier that set it apart. There's also a checkout button that connects directly to stripe.
+
+198
+00:19:40,080 --> 00:19:46,400
+So subscribing really just takes one click and once the subscription goes through the app confirms
+
+199
+00:19:46,400 --> 00:19:52,560
+the account is premium and then it unlocks all of that good gated content. All right so now I'm
+
+200
+00:19:52,560 --> 00:19:58,320
+going to try and see if all of this works out. So let's navigate to the new upgrade section here.
+
+201
+00:19:58,320 --> 00:20:03,200
+Let's go ahead and review the benefits. Let's hit checkout and now complete a test subscription.
+
+202
+00:20:03,200 --> 00:20:09,040
+And right after that as you can see the dashboard updates with a premium status. No hiccups, no confusion.
+
+203
+00:20:09,040 --> 00:20:14,880
+And now that stripe is in place the app officially has everything it needs to not just support our
+
+204
+00:20:14,880 --> 00:20:20,880
+users but also sustain itself as a real product. And for the final run through I'm going to go ahead
+
+205
+00:20:20,880 --> 00:20:26,800
+and start things off by creating a brand new account. Say calling it fit rocket because why not.
+
+206
+00:20:26,800 --> 00:20:32,720
+And after signing in I'll move to the app the way any user would checking out each section as if
+
+207
+00:20:32,720 --> 00:20:38,400
+I'm using it for the first time. Now here in the workouts tab I'm going to put together a custom
+
+208
+00:20:38,400 --> 00:20:43,040
+routine. I'm going to add a few personal notes and I'll upload a quick progress photo before
+
+209
+00:20:43,039 --> 00:20:48,480
+finishing the session to show how flexible the feature is. And after that I'm going to head over to
+
+210
+00:20:48,480 --> 00:20:53,759
+the timer here and I'm going to play around with it setting it to say 10 minutes just to test how
+
+211
+00:20:53,759 --> 00:20:59,279
+smooth it feels. Then I'll jump into the program library. I'm going to pick out a training program
+
+212
+00:20:59,279 --> 00:21:03,920
+and I'm going to walk through the routines and subcategories that it comes with. And from there
+
+213
+00:21:03,920 --> 00:21:11,200
+I'll visit the exercise library and pull up some of the detailed instructions for individual exercises.
+
+214
+00:21:11,200 --> 00:21:17,840
+I'll also log my weight and my body measurements in the progress tracker so that we can see how that
+
+215
+00:21:17,840 --> 00:21:23,279
+data gets recorded. Lastly I'll open up the upgrade section here. I'm going to go through the
+
+216
+00:21:23,279 --> 00:21:29,600
+premium checkout flow and then I'm going to reload the app to confirm that my profile now shows premium
+
+217
+00:21:29,600 --> 00:21:36,799
+status. And it's the complete experience now from signing up as a new user to unlocking every single
+
+218
+00:21:37,359 --> 00:21:42,079
+feature. Alright that's a wrap on today's video. I'll catch you down here in the comments section
+
+219
+00:21:42,079 --> 00:21:46,240
+below. I'm always looking forward to hearing your feedback and of course thank you for spending
+
+220
+00:21:46,240 --> 00:21:50,639
+your time with me today and I'll definitely catch you at the next one. Thanks for watching.

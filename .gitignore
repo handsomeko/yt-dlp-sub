@@ -1,0 +1,11 @@
+/Volumes/
+*.log
+*.tmp
+__pycache__/
+*.pyc
+.DS_Store
+downloads/
+*.backup
+.processing_complete
+.downloading
+

@@ -1,0 +1,16 @@
+  UC6t1O76G0jYXOAoYCm153dA/
+  ├── .channel_info.json              ← ✅ Channel metadata  
+  ├── .video_index.json               ← ✅ Video catalog
+  ├── {video_title}_channel_info.json ← ✅ Per-video channel info
+  └── VxAwUb86MUE/  
+      ├── .metadata.json              ← ✅ Video-level metadata
+      ├── .processing_complete        ← ✅ Processing marker
+      ├── media/
+      │   ├── {video_title}.opus      ← ✅ Primary audio (no suffix!)
+      │   └── {video_title}.mp3       ← ✅ Converted audio
+      ├── transcripts/
+      │   ├── {video_title}.srt       ← ✅ Subtitles
+      │   └── {video_title}.txt       ← ✅ Plain text
+      ├── content/                    ← ✅ Ready for generated content
+      └── metadata/
+          └── {video_title}_metadata.json ← ✅ Detailed metadata

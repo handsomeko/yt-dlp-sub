@@ -1,0 +1,174 @@
+{
+  "summary": {
+    "total_tests": 27,
+    "passed": 26,
+    "failed": 1,
+    "pass_rate": 96.29629629629629,
+    "timestamp": "2025-09-02T17:11:47.731157",
+    "server_url": "http://127.0.0.1:8002"
+  },
+  "detailed_results": [
+    {
+      "test": "Server Health",
+      "passed": true,
+      "details": "Status: 200",
+      "timestamp": "2025-09-02T17:11:44.704241"
+    },
+    {
+      "test": "Security Systems Active",
+      "passed": true,
+      "details": "Systems: ['emergency_fixes', 'enhanced_security', 'rate_limiting', 'input_validation', 'authentication', 'malicious_detection', 'security_headers', 'sql_injection_prevention']",
+      "timestamp": "2025-09-02T17:11:44.704257"
+    },
+    {
+      "test": "Malicious Input Blocked: <script>alert('xss')...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.707765"
+    },
+    {
+      "test": "Malicious Input Blocked: javascript:alert('xs...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.709689"
+    },
+    {
+      "test": "Malicious Input Blocked: <iframe src='javascr...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.711339"
+    },
+    {
+      "test": "Malicious Input Blocked: '; DROP TABLE users;...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.713554"
+    },
+    {
+      "test": "Malicious Input Blocked: ' OR '1'='1...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.715867"
+    },
+    {
+      "test": "Malicious Input Blocked: UNION SELECT * FROM ...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.717856"
+    },
+    {
+      "test": "Malicious Input Blocked: $(rm -rf /)...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.719398"
+    },
+    {
+      "test": "Malicious Input Blocked: `whoami`...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.720876"
+    },
+    {
+      "test": "Malicious Input Blocked: |nc -l -p 1234 -e /b...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.722972"
+    },
+    {
+      "test": "Malicious Input Blocked: ../../../etc/passwd...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.724667"
+    },
+    {
+      "test": "Malicious Input Blocked: ..\\..\\windows\\system...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.726781"
+    },
+    {
+      "test": "Malicious Input Blocked: /proc/version...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.728374"
+    },
+    {
+      "test": "Malicious Input Blocked: file:///etc/passwd...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.729720"
+    },
+    {
+      "test": "Malicious Input Blocked: ftp://evil.com/...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.731197"
+    },
+    {
+      "test": "Malicious Input Blocked: data:text/html,<scri...",
+      "passed": true,
+      "details": "Properly blocked with 400 error",
+      "timestamp": "2025-09-02T17:11:44.732987"
+    },
+    {
+      "test": "No Auth Header",
+      "passed": true,
+      "details": "Properly rejected with 403",
+      "timestamp": "2025-09-02T17:11:44.734337"
+    },
+    {
+      "test": "Invalid API Key",
+      "passed": true,
+      "details": "Properly rejected with 401",
+      "timestamp": "2025-09-02T17:11:45.739916"
+    },
+    {
+      "test": "Valid API Key",
+      "passed": true,
+      "details": "Access granted",
+      "timestamp": "2025-09-02T17:11:45.745177"
+    },
+    {
+      "test": "Read Permission",
+      "passed": true,
+      "details": "Read access granted",
+      "timestamp": "2025-09-02T17:11:45.749301"
+    },
+    {
+      "test": "Write Permission Denied",
+      "passed": true,
+      "details": "Write access properly denied",
+      "timestamp": "2025-09-02T17:11:45.755436"
+    },
+    {
+      "test": "Rate Limiting",
+      "passed": false,
+      "details": "Rate limit not triggered after 105 requests",
+      "timestamp": "2025-09-02T17:11:47.299445"
+    },
+    {
+      "test": "Security Headers",
+      "passed": true,
+      "details": "All headers present: ['X-XSS-Protection', 'X-Content-Type-Options', 'X-Frame-Options', 'Strict-Transport-Security', 'Content-Security-Policy', 'Referrer-Policy']",
+      "timestamp": "2025-09-02T17:11:47.300397"
+    },
+    {
+      "test": "Valid Input Processing",
+      "passed": true,
+      "details": "Valid input accepted",
+      "timestamp": "2025-09-02T17:11:47.726163"
+    },
+    {
+      "test": "Invalid URL Format",
+      "passed": true,
+      "details": "Invalid URL properly rejected",
+      "timestamp": "2025-09-02T17:11:47.728522"
+    },
+    {
+      "test": "SQL Injection Prevention",
+      "passed": true,
+      "details": "Channel list endpoint secure",
+      "timestamp": "2025-09-02T17:11:47.730819"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+# Test URLs for batch processing
+# This file demonstrates the URL file format
+
+# Individual videos
+https://www.youtube.com/watch?v=jNQXAC9IVRw  # First YouTube video ever
+https://www.youtube.com/watch?v=dQw4w9WgXcQ  # Famous Rick Roll
+
+# YouTube Shorts
+https://www.youtube.com/shorts/abc123def45
+
+# Channels (need --all flag to process)
+https://www.youtube.com/@YouTube
+https://www.youtube.com/@TED
+
+# Comments and blank lines are ignored
+
+# Invalid URLs will be reported
+not-a-valid-url
+
+# You can mix different types of URLs
+https://www.youtube.com/watch?v=9bZkp7q19f0  # Gangnam Style

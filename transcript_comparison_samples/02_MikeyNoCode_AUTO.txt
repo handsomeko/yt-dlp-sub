@@ -1,0 +1,567 @@
+Have you ever wondered how apps like
+this one are making $500,000
+every single month? And well, what if I
+told you that I just built an exact copy
+of this million-doll app without writing
+a single line of code? Now, I can hear
+you thinking already, but if you check
+out this screenshot, you can see proof
+of the revenue that this type of app
+generates through the app store. Half a
+million dollars every month. And here's
+a crazier part. I used only one AI tool
+to build the entire thing. Now, most
+people think that you need years of
+coding experience or a whole team of
+developers to create profitable apps,
+but that's completely wrong. I'm about
+to show you the exact stepby-step
+process that I use to recreate this
+successful workout tracking app, connect
+it to Stripe for payments, and set up
+all the premium features without
+touching a single line of code. By the
+way, my name is Mikey M I K E Y and I've
+been experimenting with AI development
+tools for the past year. And what I
+discovered is that there's one AI coding
+tool right now that's absolutely
+crushing everything else. And it can
+literally build entire apps for you. In
+this video, I'm going to walk you
+through my complete process. I'm gonna
+show you the exact tool that I used and
+I'm going to prove that anyone, you, me,
+even complete beginners can build
+profitable apps in 2025. So, if you've
+ever wanted to create your own app or
+make money from app development or we're
+just super curious about what's possible
+with AI right now, this video, I promise
+you, is going to blow your mind. So,
+let's go ahead and dive right in. The AI
+tool that will take care of everything
+for us today in this video will be
+Rocket. new. I added a special link in
+the description below so you can go
+ahead and check it out for yourself,
+too. So, whenever I'm starting with a
+new app build, the very first thing that
+I want to do is get a layout down,
+something that shows you how everything
+will be structured before we begin
+layering in features. It's pretty much
+like sketching the blueprint of a house
+before deciding on the furniture. Now,
+this first step will give us a clear
+picture of how the app will flow and
+it'll also set the foundation for
+everything we're going to add in later.
+So, for this build, again, we'll be
+using Rocket. And one of the biggest
+advantages here of using Rocket is code
+ownership. Unlike other platforms that
+lock you in, you own your own code
+completely. You can download it, you can
+modify it, you can host it anywhere you
+want. Even if you cancel your
+subscription, your apps and your code
+remain yours forever. All right, so
+here's what we're going to tell Rocket.
+Hey, Rocket, let's build an awesome
+mobile fitness app. First, please build
+the UI of the app. Then, we'll add some
+features afterwards. Please build all
+the sections and the navbar needed. All
+right, before we move on, important
+disclaimer here because building apps
+and making money online is not easy
+despite what other YouTubers might be
+saying. So, when I show you how to build
+an app, for example, I'm demonstrating
+the technical process and the potential.
+I am not guaranteeing your results.
+These AI tools are legit, and as you'll
+see, the techniques do work, but
+success, as with all things in life,
+depends on your execution, your timing,
+and honestly, some luck. Now, most apps
+don't make money right away. and many
+don't even make money at all. So, I'm
+not promising you're going to get rich
+or that you go out and quit your job
+after this video. Now, this is not
+financial advice or a get-rich quick
+scheme. I'm just showing you what's
+possible with these tools and what you
+do with that knowledge is up to you. All
+right, so with those expectations set,
+let's go ahead and continue building
+this app. So, Rocket responds by putting
+together a clean, elegant design for our
+fitness app. All the major sections are
+there. The placeholders are neatly set
+and the overall look already feels
+polished even at this early stage. It is
+simple but it gives us a working canvas
+that we can start refining right away.
+So let's go ahead and look through the
+app. And you can see here that the
+structure is functional. But there is a
+small error. The navbar doesn't appear
+on the home screen which might make the
+navigation look incomplete at first. But
+if I do tap into one of the sections,
+the navbar appears and it works as
+expected. So it is a promising start.
+But the next step will make sure that
+the navbar shows up everywhere so that
+our navigation feels seamless from the
+very beginning. Now that we've got the
+basic layout in place, we are now going
+to go ahead and take things up a notch.
+Now the first version gave us a solid
+foundation, but the design still feels
+pretty bare bones to me. and that navbar
+isn't showing up consistently across our
+app. So, what I want next is a cleaner,
+more modern look that works like a
+proper fitness app and of course a fully
+working navbar that ties the whole
+experience together. So, to accomplish
+all of that, here's what we're going to
+ask Rocket. Great job, Rocket. Now,
+please improve the app's design. Give it
+a modern exercise look and add a navbar
+and the other sections we may need.
+focus on this first, then we'll build
+more functionality later. And Rocket
+comes back with a much more polished
+design. As you can see, the layout has
+been updated to look like a real
+exercise app. It's modern, it's
+cohesive, and it's visually appealing.
+On top of all of that, we now have a
+responsive navbar that shows up
+consistently, which does let us move
+smoothly between different sections.
+Now, another cool thing here is that
+Rocket just doesn't design from scratch.
+Say you already have a mockup sitting in
+Figma. Well, you can upload that
+directly into Rocket and it will turn it
+into production ready code with pixel
+perfect accuracy. And that means no
+messy handoffs to other developers and
+no it doesn't match the design kind of
+frustrations because your app looks
+exactly how you imagined it and designed
+it. And speaking of design, you can see
+the difference here right away. In this
+updated build, the sections are more
+connected, the design flows better, and
+that navbar ties everything together in
+a way that makes navigation seamless.
+Now, this upgrade gives us the
+confidence to move forward. Knowing that
+our app doesn't just work structurally,
+but also looks the part. Okay, so a
+fitness app without a workout tracker
+doesn't really make much sense. So, this
+is where we start building out the core
+functionality. And the goal here is to
+let our users create their own workouts,
+track their own progress, and have that
+flexibility to manage sessions however
+they want. So, let's make that happen by
+sending Rocket this kind of prompt.
+Great job, Rocket. Let's focus on
+building the actual functionality.
+Please create a workout tracker and a
+creator feature where the user can
+create their own custom workouts and
+track their progress in said workouts.
+Give them the ability to add notes and
+progress photos in the workout plans
+they created. Also, give them the
+ability to add exercises or sets while a
+workout they created is in progress.
+Lastly, give them the ability to be able
+to finish workouts that they started at
+any time without completing all the
+exercises. And now, the workflow
+delivers a fully functional workout
+tracker inside of our app. And our users
+can now design custom workout plans.
+They can attach notes. They can include
+their own progress photos and add or
+remove sets as they go. And one of the
+best parts is that workouts, they don't
+have to be fully completed to end a
+session. And this gives our users more
+realistic control over how they train.
+Okay, so let's go ahead and try all of
+that out. I'll create a workout called,
+say, calisthenics. And I'm going to
+start adding exercises. So first I'll
+add some push-ups and then some planks.
+But I'm also going to go ahead and try
+to delete the planks. And there you go,
+the delete button works. And if
+something ever doesn't work, as
+expected, Rocket's builtin error
+detection will spot it and then offers a
+one-click fix. So instead of having to
+dig through a bunch of code, we can just
+hit fix it and then move on. And after
+checking that, I'll follow it up with
+some burpees. I'll save the workout. And
+then now I'm going to activate it. From
+here, the app lets me run the workout.
+And if I decide to finish early, I can
+go ahead and close it out without
+needing to complete every last set. So,
+it's flexible, it's practical, and it
+feels like a real fitness tracker that
+adapts to our users. Every good fitness
+app needs a knowledge base that users
+can rely on, not just for tracking their
+own workouts, but also for guidance and
+for ideas. And right now, the library
+section in our app has just been
+placeholder. So, it's now time to turn
+that into a real resource. And this
+means giving our users access to a
+complete workout database filled with
+details and instructions that they can
+use at any time. So, here's the prompt
+we're going to send over to Rocket to
+make that all happen. Awesome job,
+Rocket. Now, please build the workout
+library/database.
+create a thorough database with
+instructions and details for several
+workouts ranging from cardio,
+weightlifting, calisthenics, and body
+weight and the like. And with that,
+Rocket built out a full workout library
+inside of our app. And now, instead of
+empty placeholders, that section is now
+populated with a variety of exercises
+across different categories. And each
+entry comes with clear instructions and
+details so that our users can follow
+along and incorporate new routines into
+their own training. Doing this
+transforms the library into more than
+just a section of the app. It's now a
+built-in guide to help our users reach
+their fitness goals. All right, let's go
+ahead and explore this new database. So,
+I'm going to head into the library here
+and I'm going to start scrolling through
+some of the options. Now, unlike before
+where everything just kind of looked
+empty and unfinished, this section, as
+you can see, now holds real content. And
+like what I said earlier, the workout
+entry now includes instructions and
+details, which makes our app much more
+complete and gives our users a reliable
+source of reference whenever they need
+or want to try something new in their
+programming. We all know that workouts
+are great on their own, but many people
+do prefer following structured programs
+that lay out routines week by week. So,
+for this next step, I want to expand our
+library into something bigger, not just
+individual workouts, but full-on
+training programs like starting strength
+and strong lifts 5x5. This will give
+users a clear road map complete with
+principles and progression instead of
+just leaving them to piece things
+together on their own. And to do that,
+all it takes is this prompt and Rocket
+will handle the rest for us. Awesome
+job, Rocket. Now, please expand our
+application by creating optimized
+programs in our workout library. Please
+create optimized programs such as
+starting strength, strong lifts, 5x5,
+and the like. And from that prompt, we
+get an expanded program library right
+inside of our app. So instead of just
+exercises, we now have full-fledged
+programs that break down training into
+steps, routines, and guiding principles.
+And these programs provide structure for
+anyone who wants a proven system to
+follow like 5x5. And they even include
+the extra details like nutrition advice
+to keep the experience well-rounded. All
+right, so check this out. We can see
+here under the new program section a
+full list of structured and training
+plans is ready to explore and opening
+them up reveals complete routines, clear
+principles and supporting details that
+you know go beyond just exercises, even
+touching on nutrition. Now, compared to
+where we started off in this video, this
+addition turns our app into a guide that
+can now carry our users through an
+entire fitness journey all step by step.
+Now, after all that building and
+refining, I think it's now finally time
+to, you know, step back and see how
+everything comes together. So, I'm going
+to walk you through the app section by
+section. Now, here, each part looks
+complete and it's all connected now
+seamlessly. Our app no longer is just a
+collection of features, but it is a
+cohesive fitness platform. So, let's put
+the workout creator to the test. I'll go
+into the workout section here. I'm going
+to start building a new routine. I'll
+also add a mix of different exercises.
+I'll save the plan and then I'm just
+going to launch it. And while running
+the workout, I am going to drop in some
+personal notes of mine and even upload a
+progress photo to show how flexible the
+feature really is. And just like we
+designed earlier, I'm able to finish the
+workout early without having to complete
+every exercise. Now, let's go ahead and
+move into the program library to check
+out these specialized training programs
+that we recently added. And there you
+go. It is a library, a planner, and a
+workout companion all in one place. Now,
+by this point, I'm hoping that we can
+all agree this doesn't feel just like a
+prototype anymore. Because while other
+platforms struggle to make mobile apps
+actually work, Rocket generates real
+Flutter apps that run seamlessly across
+both iOS and Android with true native
+performance. And on top of that, it
+gives you a readymade frame on the back
+end. So you can choose whether to build
+a web app, a mobile app, or even an
+internal tool. Okay, so now that we've
+seen how the app functions as a whole,
+it's, you know, time to add another
+feature because why not? That makes
+workouts more practical in real life.
+And one feature that every fitness app
+needs is a reliable timer because I
+don't want to open another app. So
+whether it's for rest periods, circuit
+training, or just keeping workout
+structured, having a timer built
+directly into the dashboard makes the
+whole experience more seamless. And to
+do that, we'll guide Rocket with this
+prompt to get the feature built in.
+Awesome. Now, please create a timer in
+the home and dashboard. This should be
+at the front. Make the default time as 2
+minutes, which can be customized and
+edited manually. Also below the timer
+have a selection from our existing
+workouts that the user can tap. So the
+timer starts automatically displaying
+the workout. Okay, so the output for
+that gives us a dedicated timer right
+here on our dashboard. It isn't just a
+standalone tool either. It also doubles
+as a quick start option for any workout
+that we choose since all the routines
+we've created are listed right below it.
+and that way we can jump straight into
+training without any extra steps. So to
+showcase this, I'm going to go ahead and
+run through a quick test. I'll adjust
+the timer settings here by changing the
+minutes. I'm also going to try out the
+reset start and stop buttons just to
+make sure everything works smoothly. And
+after that, I'm just going to go ahead
+and pick one of the workouts from the my
+workouts section. And just like we
+planned, the timer automatically starts
+with that routine that I just chose.
+Now, so when it comes to fitness, right,
+fitness apps, nothing's more motivating
+than actually seeing your own progress.
+And that's why the final piece we're
+adding is a proper progress tracker,
+something that goes beyond just logging
+workouts and really shows us how far
+we've come. So, I'm going to ask Rocket
+to build out a full progress section,
+stats, body measurements, and photo
+tracking to tie everything together.
+something like this. Great job, Rocket.
+Now, let's focus on building the
+progress tracking feature and
+statistics. Please build the progress
+section and allow the user to track
+their progress with advanced statistics
+that show personal records and
+progression. Also add a body
+measurements tracker for weight and
+vitals and give the ability to upload
+and add photos of the user's progress.
+And the output for that shows that the
+app now has a working progress tracking
+section and everything inside of it is
+functional and it is ready to use. So
+let's go ahead and try to upload a
+simple progress photo, then track my
+weight and body part measurements here
+and instantly the analytics will pop up
+showing clear stats and progression
+trends. It's surprisingly satisfying to
+watch the numbers and the visuals all
+line up, and it's all proof that the
+workouts and the routines are paying
+off. At this point, the app has plenty
+of features, but without accounts and
+authentication, it really is just a
+single user experience. So, in order to
+make it feel like a complete platform,
+our next step is to hook it up with
+Superbase and add proper login and
+signup pages. The setup starts by
+heading over to my Superbase here,
+creating a new project, then going into
+the integration panel back in Rocket,
+and then just linking that project into
+our app. And once that's ready, here's
+the prompt we'll use. Now, please
+integrate Superbase and create the login
+and sign up pages. Also, make sure that
+the profile section shows the loggedin
+user. And with that, Rocket takes care
+of the integration and generates a clean
+authentication flow. And we now have
+dedicated login and signup screens along
+with user account handling powered by
+Superbase. And along with that, the app
+automatically pulls in profile
+information so that our logged in users
+name shows up right here on the
+dashboard and in the profile section.
+And this isn't just a demo either
+because when Rocket adds Superbase
+authentication or later on Stripe
+payments, it is production ready
+functionality. It's not placeholder
+code. So you can connect your accounts
+and then start processing real login or
+payments right away. And with that,
+let's go ahead and test all of that out.
+I'm going to create a fresh account
+here. I'm going to sign in and I'm going
+to move into the app. And everything so
+far works smoothly. The signup goes
+through. The login directs me straight
+to my dashboard and my name displays
+exactly where it should. All right. So
+far, we've built a ton of features,
+tracking, and authentication. But to
+really turn this into a business, we
+need a way to monetize it. And we'll be
+needing Stripe here. And the idea here
+is simple, which is to give users a
+smooth upgrade path so that they can
+unlock everything that our app has to
+offer. And to do that, I'm going to head
+over to my Stripe. I'm going to grab the
+publishable and secret keys. And then
+I'm simply going to plug them into
+Rocket's integration panel under the
+Stripe section. And after setting that
+up, I'm just going to drop in this final
+prompt. Great job, Rocket. Now, lastly,
+please integrate Stripe and have a
+simple checkout link using the keys that
+I provided. Please create a new section
+called upgrade. And within that section,
+show the details and benefits of our
+app's premium upgrade. At the bottom of
+the section, we have a checkout button
+which redirects to Stripe. And with that
+prompt, Rocket instantly adds an upgrade
+tab to our app right here. And inside,
+users can see exactly what Premium
+offers. Advanced tracking, expanded
+features, and all the little extras that
+we added earlier that set it apart.
+There's also a checkout button that
+connects directly to Stripe. So,
+subscribing really just takes one click.
+And once the subscription goes through,
+the app confirms the account is premium
+and then it unlocks all of that good
+gated content. All right, so now I'm
+going to try and see if all of this
+works out. So let's navigate to the new
+upgrade section here. Let's go ahead and
+review the benefits. Let's hit checkout
+and now complete a test subscription.
+And right after that, as you can see,
+the dashboard updates with a premium
+status. No hiccups, no confusion. And
+now that Stripe is in place, the app
+officially has everything it needs to
+not just support our users, but also
+sustain itself as a real product. And
+for the final run through, I'm going to
+go ahead and start things off by
+creating a brand new account, say
+calling it Fit Rocket because why not?
+And after signing in, I'll move through
+the app the way any user would, checking
+out each section as if I'm using it for
+the first time. Now, here in the
+workouts tab, I'm going to put together
+a custom routine. I'm going to add a few
+personal notes and I'll upload a quick
+progress photo before finishing the
+session to show how flexible the feature
+is. And after that, I'm going to head
+over to the timer here and I'm going to
+play around with it, setting it to say
+10 minutes just to test how smooth it
+feels. Then I'll jump into the program
+library. I'm going to pick out a
+training program and I'm going to walk
+through the routines and subcategories
+that it comes with. And from there, I'll
+visit the exercise library and pull up
+some of the detailed instructions for
+individual exercises. I'll also log my
+weight and my body measurements in the
+progress tracker so that we can see how
+that data gets recorded. Lastly, I'll
+open up the upgrade section here. I'm
+going to go through the premium checkout
+flow and then I'm going to reload the
+app to confirm that my profile now shows
+premium status. And it's the complete
+experience now from signing up as a new
+user to unlocking every single feature.
+All right, that's a wrap on today's
+video. I'll catch you down here in the
+comments section below. I'm always
+looking forward to hearing your feedback
+and of course, thank you for spending
+your time with me today and I'll
+definitely catch you at the next one.
+Thanks for watching.

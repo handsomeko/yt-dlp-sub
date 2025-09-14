@@ -1,0 +1,26 @@
+{
+  "channels": [
+    {
+      "url": "https://www.youtube.com/@\u900d\u9059\u5065\u5eb7\u6307\u5357",
+      "name": "\u900d\u9059\u5065\u5eb7\u6307\u5357",
+      "priority": "high",
+      "translate": true,
+      "target_language": "en",
+      "limit": 10
+    },
+    {
+      "url": "https://www.youtube.com/@health-k6s",
+      "name": "Health Channel",
+      "priority": "normal",
+      "translate": true
+    },
+    "@healthdiary7",
+    "@healthyeyes2"
+  ],
+  "settings": {
+    "max_concurrent_workers": 10,
+    "min_workers": 2,
+    "continuous_mode": true,
+    "log_level": "INFO"
+  }
+}
