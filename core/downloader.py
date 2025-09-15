@@ -176,10 +176,16 @@ class YouTubeDownloader:
         video_base_dir = self.storage.get_video_dir(channel_id, video_id)
         video_base_dir.mkdir(parents=True, exist_ok=True)
         
+        # TRACKING: Record processing attempt
+        from core.processing_tracker import track_video_stage, ProcessingStage
+        track_video_stage(channel_id, video_id, ProcessingStage.QUEUED, f"Processing started for: {title}")
+
         # Check if already fully processed
         processing_complete_marker = video_base_dir / '.processing_complete'
         if processing_complete_marker.exists():
             self.logger.info(f"⏭️  Skipping already processed video: {title}")
+            # TRACKING: Record skip
+            track_video_stage(channel_id, video_id, ProcessingStage.COMPLETED, "Already processed - skipped")
             return {
                 'status': 'skipped',
                 'reason': 'already_processed',
@@ -934,10 +940,21 @@ class YouTubeDownloader:
     def _mark_processing_complete(self, video_dir: Path):
         """Mark processing as complete"""
         from datetime import datetime
-        
+
         complete_file = video_dir / '.processing_complete'
         with open(complete_file, 'w') as f:
             f.write(datetime.now().isoformat())
+
+        # TRACKING: Record successful completion
+        try:
+            # Extract video_id and channel_id from path structure
+            video_id = video_dir.name
+            channel_id = video_dir.parent.name
+
+            from core.processing_tracker import track_video_stage, ProcessingStage
+            track_video_stage(channel_id, video_id, ProcessingStage.COMPLETED, "Processing completed successfully")
+        except Exception as e:
+            self.logger.warning(f"Failed to track completion: {e}")
 
     def _create_markdown_report(self, video_dir: Path, video_title: str, data: dict):
         """Create comprehensive markdown report with all video metadata"""
