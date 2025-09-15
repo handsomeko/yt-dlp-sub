@@ -1903,8 +1903,16 @@ class YouTubeDownloader:
         
         # Convert VideoInfo objects to dictionaries and add channel name
         channel_name = channel_info.get('channel_name')
+        channel_id = channel_info.get('channel_id', 'unknown')
+
+        # TRACKING: Record video discovery to eliminate "unknown video" warnings
+        from core.processing_tracker import track_video_discovery
+
         video_dicts = []
         for video in videos:
+            # TRACKING: Record each video during discovery phase
+            track_video_discovery(channel_id, video.video_id, video.title, 'yt-dlp')
+
             # Convert VideoInfo to dict
             video_dict = {
                 'video_id': video.video_id,
