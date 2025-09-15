@@ -1124,19 +1124,34 @@ def channel_download(channel_url: str, limit: Optional[int], quality: str, audio
                 storage = get_storage_paths_v2()
                 downloads_dir = Path(storage.base_path)
 
-                # Find most recent channel directory (the one just processed)
-                channel_dirs = [d for d in downloads_dir.iterdir() if d.is_dir() and not d.name.startswith('.')]
-                if channel_dirs:
-                    latest_channel = max(channel_dirs, key=lambda d: d.stat().st_mtime)
-                    # Count actual completion markers for honest success count
-                    completion_files = list(latest_channel.glob('**/.processing_complete'))
-                    successful = len(completion_files)
-                    # Count total video directories for honest total count
-                    video_dirs = [d for d in latest_channel.iterdir() if d.is_dir() and not d.name.startswith('.')]
-                    honest_total = len(video_dirs)
+                # Use the specific channel that was just processed (not latest modified)
+                channel_info = results.get('channel_info', {})
+                channel_id = channel_info.get('channel_id')
+
+                if channel_id:
+                    # Count completion files in the specific channel processed
+                    specific_channel = downloads_dir / channel_id
+                    if specific_channel.exists():
+                        completion_files = list(specific_channel.glob('**/.processing_complete'))
+                        successful = len(completion_files)
+                        # Count total video directories for honest total count
+                        video_dirs = [d for d in specific_channel.iterdir() if d.is_dir() and not d.name.startswith('.')]
+                        honest_total = len(video_dirs)
+                    else:
+                        successful = 0
+                        honest_total = 0
                 else:
-                    successful = 0
-                    honest_total = 0
+                    # Fallback to original logic if no channel_id available
+                    channel_dirs = [d for d in downloads_dir.iterdir() if d.is_dir() and not d.name.startswith('.')]
+                    if channel_dirs:
+                        latest_channel = max(channel_dirs, key=lambda d: d.stat().st_mtime)
+                        completion_files = list(latest_channel.glob('**/.processing_complete'))
+                        successful = len(completion_files)
+                        video_dirs = [d for d in latest_channel.iterdir() if d.is_dir() and not d.name.startswith('.')]
+                        honest_total = len(video_dirs)
+                    else:
+                        successful = 0
+                        honest_total = 0
 
             except Exception as e:
                 # Fallback to original broken metrics if verification fails
