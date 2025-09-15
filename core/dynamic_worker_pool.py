@@ -408,11 +408,19 @@ class DynamicWorkerPool:
 _worker_pool_instance = None
 
 
-def get_dynamic_worker_pool() -> DynamicWorkerPool:
-    """Get or create the singleton worker pool instance"""
+def get_dynamic_worker_pool(max_workers: Optional[int] = None) -> DynamicWorkerPool:
+    """Get or create the singleton worker pool instance with optional CLI configuration"""
     global _worker_pool_instance
     if _worker_pool_instance is None:
-        _worker_pool_instance = DynamicWorkerPool()
+        if max_workers is not None:
+            # Respect CLI concurrent setting
+            effective_max = max_workers
+            effective_min = min(1, max_workers)  # Don't exceed max
+            _worker_pool_instance = DynamicWorkerPool(min_workers=effective_min, max_workers=effective_max)
+            logger.info(f"Worker pool configured for CLI concurrent={max_workers}: min={effective_min}, max={effective_max}")
+        else:
+            # Use defaults when no CLI setting provided
+            _worker_pool_instance = DynamicWorkerPool()
     return _worker_pool_instance
 
 

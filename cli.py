@@ -991,8 +991,8 @@ def channel_download(channel_url: str, limit: Optional[int], quality: str, audio
             from core.dynamic_worker_pool import get_dynamic_worker_pool
             import asyncio
             
-            # Get real dynamic worker pool instead of fake concurrency manager
-            worker_pool = get_dynamic_worker_pool()
+            # FIXED: Configure worker pool to respect CLI concurrent setting
+            worker_pool = get_dynamic_worker_pool(max_workers=concurrent)
             
             # Check if we should use system-wide limits
             use_system_limit = True  # Always use system limits for consistency
