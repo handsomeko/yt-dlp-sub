@@ -1115,37 +1115,79 @@ def channel_download(channel_url: str, limit: Optional[int], quality: str, audio
             if results.get('status') == 'error':
                 raise ValueError(results.get('error', 'Download failed'))
             
-            # Extract statistics
-            successful = len(results.get('successful', []))
+            # FIXED: Extract statistics using honest filesystem verification
+            # Problem: Completed videos marked as "skipped", causing "Successful: 0" false reporting
+            try:
+                from core.storage_paths_v2 import get_storage_paths_v2
+                from pathlib import Path
+
+                storage = get_storage_paths_v2()
+                downloads_dir = Path(storage.base_path)
+
+                # Find most recent channel directory (the one just processed)
+                channel_dirs = [d for d in downloads_dir.iterdir() if d.is_dir() and not d.name.startswith('.')]
+                if channel_dirs:
+                    latest_channel = max(channel_dirs, key=lambda d: d.stat().st_mtime)
+                    # Count actual completion markers for honest success count
+                    completion_files = list(latest_channel.glob('**/.processing_complete'))
+                    successful = len(completion_files)
+                    # Count total video directories for honest total count
+                    video_dirs = [d for d in latest_channel.iterdir() if d.is_dir() and not d.name.startswith('.')]
+                    honest_total = len(video_dirs)
+                else:
+                    successful = 0
+                    honest_total = 0
+
+            except Exception as e:
+                # Fallback to original broken metrics if verification fails
+                self.logger.warning(f"Failed to verify completion: {e}")
+                successful = len(results.get('successful', []))
+                honest_total = results.get('total', 0)
+
             failed = len(results.get('failed', []))
             invalid_skipped = results.get('invalid_skipped', 0)
         
-            # Summary for direct download
+            # Summary for direct download using honest metrics
             channel_name = results.get('channel_info', {}).get('channel_name', 'Unknown')
-            total = results.get('total', 0)
+            total = honest_total if 'honest_total' in locals() else results.get('total', 0)
             duration = results.get('duration_seconds', 0)
-            
+
+            # Calculate honest success rate
+            honest_success_rate = (successful / total) if total > 0 else 0
+
             click.echo(f"\n{'='*60}")
-            click.echo(f"✅ Download Summary:")
+            click.echo(f"✅ Download Summary (Honest Metrics):")
             click.echo(f"   Channel: {click.style(channel_name, fg='cyan')}")
             click.echo(f"   Successful: {click.style(str(successful), fg='green')}/{total}")
+
+            # Show internal vs verified metrics comparison
+            internal_successful = len(results.get('successful', []))
+            internal_total = results.get('total', 0)
+            if internal_successful != successful or internal_total != total:
+                click.echo(f"   Internal (broken): {internal_successful}/{internal_total}")
+                click.echo(f"   Verified (honest): {successful}/{total}")
+
             if failed > 0:
                 click.echo(f"   Failed: {click.style(str(failed), fg='red')}")
-            
+
             # Show invalid IDs if any were filtered
-            invalid_skipped = results.get('invalid_skipped', 0)
             if invalid_skipped > 0:
                 click.echo(f"   Invalid IDs filtered: {click.style(str(invalid_skipped), fg='yellow')}")
             click.echo(f"   Mode: {'Audio Only' if download_audio_only else 'Full Video'}")
             click.echo(f"   Quality: {quality}")
             click.echo(f"   Concurrent Downloads: {concurrent}")
-            
-            # Performance metrics
+
+            # Performance metrics with honest success rate
             if duration > 0:
                 click.echo(f"\n📊 Performance:")
                 click.echo(f"   Duration: {duration:.1f} seconds")
                 click.echo(f"   Downloads/min: {results.get('downloads_per_minute', 0):.1f}")
-                click.echo(f"   Success Rate: {results.get('success_rate', 0)*100:.1f}%")
+                click.echo(f"   Success Rate: {honest_success_rate*100:.1f}% (verified)")
+
+                # Show comparison with internal rate if different
+                internal_rate = results.get('success_rate', 0)*100
+                if abs(honest_success_rate*100 - internal_rate) > 5:
+                    click.echo(f"   Internal rate: {internal_rate:.1f}% (unreliable)")
             
             # Note about V2 features
             click.echo(f"\n💡 All V2 features applied:")
