@@ -1010,8 +1010,7 @@ def channel_download(channel_url: str, limit: Optional[int], quality: str, audio
                 # Show worker pool info
                 click.echo(f"✅ Using dynamic worker pool for {channel_name}")
             
-            try:
-                
+                # Download with system limit monitoring
                 async def download_with_progress():
                     """Async function to handle concurrent downloads with progress"""
                     # Use factory to get proper configuration including deduplication
@@ -1025,7 +1024,7 @@ def channel_download(channel_url: str, limit: Optional[int], quality: str, audio
                         downloader.enable_translation = translate
                     if target_language:
                         downloader.target_language = target_language
-                    
+
                     # Define progress callback
                     def progress_callback(video_id, status, message):
                         if status == 'starting':
@@ -1036,14 +1035,14 @@ def channel_download(channel_url: str, limit: Optional[int], quality: str, audio
                             click.echo(f"❌ {message}", err=True)
                         elif status == 'error':
                             click.echo(f"⚠️  {message}", err=True)
-                    
+
                     # Reduce concurrent downloads when system is loaded
                     import psutil
                     cpu_percent = psutil.cpu_percent()
                     actual_concurrent = min(concurrent, 2) if cpu_percent > 80 else concurrent
                     if actual_concurrent != concurrent:
                         click.echo(f"⚠️  High system load, reducing concurrent downloads to {actual_concurrent}")
-                    
+
                     # Download using new concurrent method
                     results = await downloader.download_channel_videos(
                         channel_url=channel_url,
@@ -1055,59 +1054,9 @@ def channel_download(channel_url: str, limit: Optional[int], quality: str, audio
                         quality=quality,
                         progress_callback=progress_callback
                     )
-                    
+
                     return results
-                
-                # Run the async download
-                results = asyncio.run(download_with_progress())
-                
-            except TimeoutError:
-                click.echo(f"❌ Timeout waiting for system slot after 5 minutes", err=True)
-                return
-                    
-            else:
-                # No system limit - run directly
-                click.echo(f"⚠️  Running without system-wide concurrency limits")
-                
-                async def download_with_progress():
-                    """Async function to handle concurrent downloads with progress"""
-                    # Use factory to get proper configuration including deduplication
-                    from core.downloader import create_downloader_with_settings
-                    downloader = create_downloader_with_settings(
-                        skip_transcription=skip_transcription,
-                        skip_punctuation=skip_punctuation
-                    )
-                    # Override translation settings if specified
-                    if translate is not None:
-                        downloader.enable_translation = translate
-                    if target_language:
-                        downloader.target_language = target_language
-                    
-                    # Define progress callback
-                    def progress_callback(video_id, status, message):
-                        if status == 'starting':
-                            click.echo(f"🎬 {message}")
-                        elif status == 'completed':
-                            click.echo(f"✅ {message}")
-                        elif status == 'failed':
-                            click.echo(f"❌ {message}", err=True)
-                        elif status == 'error':
-                            click.echo(f"⚠️  {message}", err=True)
-                    
-                    # Download using new concurrent method
-                    results = await downloader.download_channel_videos(
-                        channel_url=channel_url,
-                        limit=limit,
-                        max_concurrent=concurrent,
-                        download_audio_only=download_audio_only,
-                        audio_format='opus' if download_audio_only else None,
-                        video_format='mp4' if not download_audio_only else None,
-                        quality=quality,
-                        progress_callback=progress_callback
-                    )
-                    
-                    return results
-                
+
                 # Run the async download
                 results = asyncio.run(download_with_progress())
             
