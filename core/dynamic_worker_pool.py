@@ -421,6 +421,13 @@ def get_dynamic_worker_pool(max_workers: Optional[int] = None) -> DynamicWorkerP
         else:
             # Use defaults when no CLI setting provided
             _worker_pool_instance = DynamicWorkerPool()
+    elif max_workers is not None and _worker_pool_instance.max_workers != max_workers:
+        # Reconfigure existing instance if different max_workers requested
+        effective_max = max_workers
+        effective_min = min(1, max_workers)
+        _worker_pool_instance.max_workers = effective_max
+        _worker_pool_instance.min_workers = effective_min
+        logger.info(f"Worker pool reconfigured for CLI concurrent={max_workers}: min={effective_min}, max={effective_max}")
     return _worker_pool_instance
 
 

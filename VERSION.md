@@ -1,8 +1,30 @@
 # Version History - YouTube Content Intelligence Platform
 
-## v2.1.0 (Current Bulletproof) - September 15, 2025
+## v2.1.1 (Current Polished) - September 15, 2025
+**Commit**: `2d6bec8` - Polished Display + Dev Sync
+**Status**: Production-ready with perfect display accuracy and dev environment sync
+
+### Polish Improvements
+- ✅ **Perfect Display Accuracy** - Worker pool shows actual concurrent settings (0/1 vs 0/10)
+- ✅ **Dev Environment Sync** - Dev directory matches production behavior exactly
+- ✅ **Singleton Reconfiguration** - Worker pool adapts to different CLI parameters
+
+### Validated Production Capabilities
+- **296 videos processing successfully** (health-k6s: 122, healthyeyes2: 174)
+- **Perfect sequential processing** with `--concurrent 1`
+- **Flawless Chinese transcription** with SRT-aware punctuation
+- **Excellent rate limiting protection** with jittered backoff
+
+### Rollback Command
+```bash
+git checkout v2.1.1
+```
+
+---
+
+## v2.1.0 (Previous Bulletproof) - September 15, 2025
 **Commit**: `731c1d6` - Bulletproof Phase 1 Foundation - All Architectural Issues Fixed
-**Status**: Production-ready bulletproof foundation for Phase 2 API development
+**Status**: Production-validated - foundation for v2.1.1 polish
 
 ### Architectural Fixes Completed
 - ✅ **Honest Success Reporting** - Filesystem verification eliminates false metrics
