@@ -1667,13 +1667,23 @@ class YouTubeDownloader:
         
         # Create download tasks for valid videos only
         start_time = datetime.now()
-        tasks = [
-            download_with_semaphore(video, i) 
-            for i, video in enumerate(valid_videos)
-        ]
-        
-        # Run all downloads concurrently
-        download_results = await asyncio.gather(*tasks, return_exceptions=True)
+        # For true sequential processing when max_concurrent=1, process videos one by one
+        download_results = []
+        if max_concurrent == 1:
+            # True sequential: complete each video entirely before starting the next
+            for i, video in enumerate(valid_videos):
+                try:
+                    result = await download_with_semaphore(video, i)
+                    download_results.append(result)
+                except Exception as e:
+                    download_results.append(e)
+        else:
+            # Concurrent processing for max_concurrent > 1
+            tasks = [
+                download_with_semaphore(video, i)
+                for i, video in enumerate(valid_videos)
+            ]
+            download_results = await asyncio.gather(*tasks, return_exceptions=True)
         
         # Process results and check for stop_all signal
         should_stop_all = False
